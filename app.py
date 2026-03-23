@@ -5,7 +5,6 @@ st.set_page_config(page_title="Monde Bakery Pro", layout="wide")
 st.title("Monde Bakery - Recipe Master Pro")
 
 # --- DATA: RECIPES ---
-# Data hämtad och anpassad från dina Excel-filer och specifika instruktioner
 recipes = {
     "Monde Multi Grain Sourdough": {
         "ingredients": {
@@ -27,10 +26,28 @@ recipes = {
         6. **Bake**: 245°C for 45 min (or 98°C core). 15s steam at start.
         """
     },
+    "Sourdough Loaf with Walnuts": {
+        "ingredients": {
+            "Wheat Bread Flour": 0.3971, "Rye Flour": 0.0394, "Sourdough Starter": 0.1765, 
+            "Water": 0.3088, "Salt": 0.0132, "Walnuts": 0.0650, "Dry Yeast": 0.0001
+        },
+        "hydration": 70,
+        "default_weight": 800,
+        "bake_temp": "245°C",
+        "bake_time": "25-30 min",
+        "steam": "15 sec",
+        "instructions": """
+        1. **Autolyse & Salt Integration**: Mix your flour, water and dry yeast first. Let it rest for **40 minutes**. This ensures the flour is fully hydrated and the gluten is primed. After rest, add starter and salt. Knead for **10 minutes**.
+        2. **Strength (Stretch and Folds)**: Perform **3–4 sets of folds** during the first 2 hours of bulk fermentation, spaced 30 minutes apart. This builds a strong gluten network gradually.
+        3. **Bulk Fermentation**: Keep dough at **24–26°C**. Use the **"Poke Test"**: look for 30-50% increase in volume and a "jiggly" surface (usually 3–4 hours).
+        4. **Cold Proof**: Proof in fridge for **12–14 hours**. This makes it much easier to make the scars (scoring) in the dough.
+        5. **Oven Spring**: Preheat oven and stone to **250°C**. Bake at **245°C for 25-30 min**. Inject **15 seconds of steam** at the start.
+        """
+    },
     "Sourdough Ciabatta": {
         "ingredients": {
             "Wheat Bread Flour": 0.5389, "Sourdough Starter": 0.1796, 
-            "Water": 0.2695, "Salt": 0.0120, "Dry Yeast (optional)": 0.0001
+            "Water": 0.2695, "Salt": 0.0120, "Dry Yeast": 0.0001
         },
         "hydration": 80,
         "default_weight": 300,
@@ -41,8 +58,8 @@ recipes = {
         1. **Autolyse**: Mix flour, water and dry yeast. Rest **40 min**.
         2. **Mix**: Add starter and salt. Knead **10 min**.
         3. **Strength**: 3–4 sets of **Stretch and Folds** every 30 min. 
-        4. **Bulk**: 3–4 hours at 24–26°C. Look for "jiggly" surface.
-        5. **Proof**: 12–14 hours in fridge. Essential for handling the slack dough.
+        4. **Bulk**: 3–4 hours at 24–26°C.
+        5. **Proof**: 12–14 hours in fridge.
         6. **Bake**: 245°C for 25-30 min. 15s steam at start.
         """
     },
@@ -58,11 +75,11 @@ recipes = {
         "steam": "15 sec",
         "instructions": """
         1. **Autolyse**: Mix flour and water. Rest **40 min**.
-        2. **Mix**: Add poolish and salt. **Knead slow 5 min, then fast 4 min**.
+        2. **Mix**: Add poolish and salt. Knead slow 5 min, then fast 4 min.
         3. **Strength**: 3–4 sets of **Stretch and Folds** every 30 min.
         4. **Bulk**: 3–4 hours at 24–26°C.
-        5. **Proof**: 12–14 hours in fridge. Makes scoring/slashing much easier.
-        6. **Bake**: 245°C for 25-30 min. 15s steam at start. High heat for "ear".
+        5. **Proof**: 12–14 hours in fridge.
+        6. **Bake**: 245°C for 25-30 min. 15s steam at start.
         """
     },
     "Artisan French Levain": {
@@ -79,9 +96,9 @@ recipes = {
         1. **Autolyse**: Mix flour, water and dry yeast. Rest **40 min**.
         2. **Mix**: Add starter and salt. Knead **10 min**.
         3. **Strength**: 3–4 sets of **Stretch and Folds** every 30 min.
-        4. **Bulk**: 3–4 hours at 24–26°C until 30-50% increase.
-        5. **Proof**: 12–14 hours in fridge (Cold Proof).
-        6. **Bake**: 245°C for 25-30 min. 15s steam at start for open crumb.
+        4. **Bulk**: 3–4 hours at 24–26°C.
+        5. **Proof**: 12–14 hours in fridge.
+        6. **Bake**: 245°C for 25-30 min. 15s steam at start.
         """
     }
 }
@@ -91,7 +108,7 @@ st.sidebar.header("Bakery Management")
 selected_name = st.sidebar.selectbox("Select Recipe", list(recipes.keys()))
 recipe = recipes[selected_name]
 
-units = st.sidebar.number_input("Number of Loaves/Pieces", min_value=1, value=10)
+units = st.sidebar.number_input("Number of Loaves/Pieces", min_value=1, value=5)
 target_weight = st.sidebar.number_input("Target Weight (g)", value=recipe["default_weight"])
 
 st.sidebar.divider()
@@ -105,7 +122,7 @@ total_revenue = units * selling_price
 total_profit = total_revenue - total_cost
 
 # --- MAIN DISPLAY ---
-st.header(f"🥖 {selected_name}")
+st.header(f"🍞 {selected_name}")
 
 col_left, col_right = st.columns([3, 2])
 
@@ -138,7 +155,8 @@ with col_right:
     
     st.divider()
     st.subheader("Financials")
-    st.metric("Profit", f"{total_profit:,.0f} LKR")
-    st.metric("Revenue", f"{total_revenue:,.0f} LKR")
+    st.metric("Estimated Profit", f"{total_profit:,.0f} LKR")
+    st.metric("Total Revenue", f"{total_revenue:,.0f} LKR")
 
-st.caption("Happy baking—you’re in for a rewarding bake!")
+st.info("💡 **Happy baking—you’re in for a rewarding bake!**")
+st.caption("Monde Bakery Digital Handbook")
