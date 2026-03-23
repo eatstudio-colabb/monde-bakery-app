@@ -20,10 +20,28 @@ recipes = {
         "instructions": """
         1. **Autolyse**: Mix flour and water. Rest **40 min**.
         2. **Mix**: Add starter and salt. Knead **10 min**.
-        3. **Strength**: 3–4 sets of **Stretch and Folds** every 30 min. **Add all seeds** during the folds.
-        4. **Bulk**: 3–4 hours at 24–26°C until "jiggly" (30-50% growth).
-        5. **Proof**: 12–14 hours in fridge (Cold Proof).
-        6. **Bake**: 245°C for 45 min (or 98°C core). 15s steam at start.
+        3. **Strength**: 3–4 sets of **Stretch and Folds** every 30 min. Add seeds during folds.
+        4. **Bulk**: 3–4 hours at 24–26°C until "jiggly".
+        5. **Proof**: 12–14 hours in fridge.
+        6. **Bake**: 245°C for 45 min. 15s steam at start.
+        """
+    },
+    "Focaccia with Sourdough": {
+        "ingredients": {
+            "Wheat Bread Flour": 0.4655, "Water": 0.3292, "Sourdough Starter": 0.1587, 
+            "Salt": 0.0132, "Olive Oil": 0.0333, "Dry Yeast": 0.0001
+        },
+        "hydration": 75,
+        "default_weight": 800,
+        "bake_temp": "245°C",
+        "bake_time": "25-30 min",
+        "steam": "15 sec",
+        "instructions": """
+        1. **Autolyse & Salt Integration**: Mix your flour, dry yeast and water first. Let it rest for **40 minutes** to ensure full hydration. After the rest, add the starter and salt. Knead the dough for **10 minutes**.
+        2. **Strength (Stretch and Folds)**: Use the **Stretch and Fold** method. Perform **3–4 sets** during the first 2 hours of bulk fermentation, spaced 30 minutes apart to build a strong gluten network.
+        3. **Bulk Fermentation**: Keep at a stable **24–26°C**. Use the **"Poke Test"**: look for 30-50% volume increase and a "jiggly" surface (approx. 3–4 hours).
+        4. **Cold Proof (Recommended)**: For best results, proof in the fridge for **12–14 hours**. This slow proof develops flavor and makes the dough easier to handle/dimple.
+        5. **Maximize Oven Spring**: Preheat oven and baking stone to **250°C**. Bake at **245°C for 25-30 min**. Inject **15 seconds of steam** at the very start to keep the crust supple.
         """
     },
     "Sourdough Loaf with Walnuts": {
@@ -37,69 +55,46 @@ recipes = {
         "bake_time": "25-30 min",
         "steam": "15 sec",
         "instructions": """
-        1. **Autolyse & Salt Integration**: Mix your flour, water and dry yeast first. Let it rest for **40 minutes**. This ensures the flour is fully hydrated and the gluten is primed. After rest, add starter and salt. Knead for **10 minutes**.
-        2. **Strength (Stretch and Folds)**: Perform **3–4 sets of folds** during the first 2 hours of bulk fermentation, spaced 30 minutes apart. This builds a strong gluten network gradually.
-        3. **Bulk Fermentation**: Keep dough at **24–26°C**. Use the **"Poke Test"**: look for 30-50% increase in volume and a "jiggly" surface (usually 3–4 hours).
-        4. **Cold Proof**: Proof in fridge for **12–14 hours**. This makes it much easier to make the scars (scoring) in the dough.
-        5. **Oven Spring**: Preheat oven and stone to **250°C**. Bake at **245°C for 25-30 min**. Inject **15 seconds of steam** at the start.
+        1. **Autolyse**: Mix flour, water and dry yeast. Rest **40 min**.
+        2. **Mix**: Add starter and salt. Knead **10 min**.
+        3. **Strength**: 3–4 sets of **Stretch and Folds**.
+        4. **Bulk**: 3–4 hours at 24–26°C.
+        5. **Proof**: 12–14 hours in fridge.
+        6. **Bake**: 245°C for 25-30 min. 15s steam at start.
         """
     },
     "Sourdough Ciabatta": {
         "ingredients": {
-            "Wheat Bread Flour": 0.5389, "Sourdough Starter": 0.1796, 
-            "Water": 0.2695, "Salt": 0.0120, "Dry Yeast": 0.0001
+            "Wheat Bread Flour": 0.5389, "Sourdough Starter": 0.1796, "Water": 0.2695, "Salt": 0.0120, "Dry Yeast": 0.0001
         },
         "hydration": 80,
         "default_weight": 300,
         "bake_temp": "245°C",
         "bake_time": "25-30 min",
         "steam": "15 sec",
-        "instructions": """
-        1. **Autolyse**: Mix flour, water and dry yeast. Rest **40 min**.
-        2. **Mix**: Add starter and salt. Knead **10 min**.
-        3. **Strength**: 3–4 sets of **Stretch and Folds** every 30 min. 
-        4. **Bulk**: 3–4 hours at 24–26°C.
-        5. **Proof**: 12–14 hours in fridge.
-        6. **Bake**: 245°C for 25-30 min. 15s steam at start.
-        """
+        "instructions": "Autolyse 40 min with dry yeast. Knead 10 min. 4 sets of folds. Cold proof 12-14h. Bake 245°C with 15s steam."
     },
     "Baguette with Poolish": {
         "ingredients": {
-            "Wheat Flour": 0.4834, "Water": 0.2417, "Poolish": 0.2660, 
-            "Salt": 0.0088, "Dry Yeast": 0.0001
+            "Wheat Flour": 0.4834, "Water": 0.2417, "Poolish": 0.2660, "Salt": 0.0088, "Dry Yeast": 0.0001
         },
         "hydration": 70,
         "default_weight": 350,
         "bake_temp": "245°C",
         "bake_time": "25-30 min",
         "steam": "15 sec",
-        "instructions": """
-        1. **Autolyse**: Mix flour and water. Rest **40 min**.
-        2. **Mix**: Add poolish and salt. Knead slow 5 min, then fast 4 min.
-        3. **Strength**: 3–4 sets of **Stretch and Folds** every 30 min.
-        4. **Bulk**: 3–4 hours at 24–26°C.
-        5. **Proof**: 12–14 hours in fridge.
-        6. **Bake**: 245°C for 25-30 min. 15s steam at start.
-        """
+        "instructions": "Autolyse 40 min. Add poolish/salt. Knead 5 min slow + 4 min fast. 4 sets of folds. Cold proof 12-14h. Bake 245°C with 15s steam."
     },
     "Artisan French Levain": {
         "ingredients": {
-            "Wheat Bread Flour": 0.4965, "Water": 0.3308, "Sourdough Starter": 0.1595, 
-            "Salt": 0.0132, "Dry Yeast": 0.0001
+            "Wheat Bread Flour": 0.4965, "Water": 0.3308, "Sourdough Starter": 0.1595, "Salt": 0.0132, "Dry Yeast": 0.0001
         },
         "hydration": 72,
         "default_weight": 800,
         "bake_temp": "245°C",
         "bake_time": "25-30 min",
         "steam": "15 sec",
-        "instructions": """
-        1. **Autolyse**: Mix flour, water and dry yeast. Rest **40 min**.
-        2. **Mix**: Add starter and salt. Knead **10 min**.
-        3. **Strength**: 3–4 sets of **Stretch and Folds** every 30 min.
-        4. **Bulk**: 3–4 hours at 24–26°C.
-        5. **Proof**: 12–14 hours in fridge.
-        6. **Bake**: 245°C for 25-30 min. 15s steam at start.
-        """
+        "instructions": "Autolyse 40 min with dry yeast. Knead 10 min. 4 sets of folds. Cold proof 12-14h. Bake 245°C with 15s steam."
     }
 }
 
