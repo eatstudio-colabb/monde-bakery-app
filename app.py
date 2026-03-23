@@ -4,7 +4,7 @@ st.set_page_config(page_title="Monde Bakery Pro", layout="wide")
 
 st.title("Monde Bakery - Recipe Master Pro")
 
-# --- DATA: RECIPES med utförliga instruktioner och hydration ---
+# --- DATA: RECIPES WITH HYDRATION & DETAILED RATIOS ---
 recipes = {
     "Artisan Levain French Sourdough": {
         "ingredients": {
@@ -13,56 +13,73 @@ recipes = {
             "Sourdough Starter": 0.1613, 
             "Salt": 0.0114
         },
-        "hydration_info": "67% (Standard) - Justera efter mjölets förmåga.",
+        "hydration": 67,
         "default_weight": 800,
         "instructions": """
-        1. **Autolyse & Mix**: Blanda mjöl, vatten och ev. torrjäst först. Låt vila i 40 minuter. Tillsätt sedan surdeg och salt. Knåda degen i 10 minuter. Detta säkerställer att mjölet är fullt hydrerat innan saltet stramar åt glutenet.
+        1. **Autolyse & Mix**: Mix flour, water, and dry yeast (if using) first. Let rest for 40 minutes. Then add the sourdough starter and salt. Knead the dough for 10 minutes. This ensures the flour is fully hydrated before the salt tightens the gluten.
         
-        2. **Stretch and Fold**: Vid 70% hydration behövs ingen aggressiv knådning. Utför 3–4 set 'stretch and folds' under de första 2 timmarna av bulkfermenteringen med 30 minuters mellanrum.
+        2. **Stretch and Fold**: At 70% hydration, aggressive kneading isn't needed. Perform 3–4 sets of "stretch and folds" during the first 2 hours of bulk fermentation, spaced 30 minutes apart.
         
-        3. **Bulkfermentering**: Håll degen vid 24–26°C. Lita inte bara på timern; titta efter 30-50% ökning i volym och en "jiggly" yta (ca 3-4 timmar).
+        3. **Bulk Fermentation**: Keep dough at 24–26°C. Don't rely solely on a timer; look for a 30-50% increase in volume and a "jiggly" surface (usually 3-4 hours).
         
-        4. **Kalljäsning (Rekommenderas)**: Låt degen jäsa i kylskåp i 12-14 timmar. Det ger bättre smak och gör det mycket enklare att snitta (skära skåror) i degen.
+        4. **Cold Proof (Recommended)**: Proof in the fridge for 12-14 hours. This develops flavor and makes the dough much easier to score (scar).
         
-        5. **Gräddning**: Förvärm ugn och baksten till 250°C. Snitta brödet och skjutsa in i ugnen. Sänk till 245°C.
+        5. **Baking**: Preheat oven and baking stone to 250°C. Score the bread and load it. Lower temperature to 245°C.
         
-        6. **Ånga**: Injicera 15 sekunder ånga direkt vid start. Använd rikligt med ånga de första 15–20 minuterna för att hålla skorpan mjuk så brödet kan expandera maximalt (maximal oven spring). Grädda totalt 25-30 minuter.
+        6. **Steam**: Inject 15 seconds of steam immediately at the start. Use plenty of steam for the first 15–20 minutes to keep the crust supple for maximum oven spring. Bake for 25-30 minutes total.
         """,
-        "tips": "För ett professionellt 'öra', se till att ugnen är riktigt het och att ångan är tät i början!"
+        "tips": "For a professional 'ear', ensure high initial heat and consistent steam in the first phase!"
     },
     "Focaccia with Sourdough": {
         "ingredients": {"Wheat Flour": 0.4655, "Water": 0.3335, "Sourdough": 0.1817, "Salt": 0.0111, "Olive Oil": 0.0082},
-        "hydration_info": "72%",
-        "default_weight": 5002,
-        "instructions": "Blanda mjöl, vatten och surdeg. Autolys 30 min. Tillsätt salt/olja. 4 folds. Jäs i form med rikligt med olivolja. Dimpla med fingrarna och baka i 230°C.",
-        "tips": "Använd fingertopparna för att skapa djupa hål precis innan gräddning."
+        "hydration": 72,
+        "default_weight": 500,
+        "instructions": "Mix flour, water, and starter. Autolyse 30 min. Add salt/oil. 4 sets of folds. Proof in tray with plenty of olive oil. Dimple and bake at 230°C.",
+        "tips": "Use your fingertips to create deep dimples just before baking to trap the oil."
     },
     "Baguette with Poolish": {
         "ingredients": {"Wheat Flour": 0.4834, "Water": 0.2417, "Poolish": 0.2417, "Salt": 0.0089, "Dry Yeast": 0.0001},
-        "hydration_info": "65%",
-        "default_weight": 350,
-        "instructions": "Gör poolish 12h innan. Blanda degen, vila 45 min. Forma långa baguetter. Snitta 5 gånger omlott. Baka med mycket ånga.",
-        "tips": "Vila är nyckeln för att kunna rulla ut baguetterna långa utan att de drar ihop sig."
+        "hydration": 65,
+        "default_weight": 300,
+        "instructions": "Prepare poolish 12h ahead. Mix dough, rest 45 min. Shape into long baguettes. Score 5 times overlapping. Bake with heavy steam.",
+        "tips": "Resting is key to being able to stretch the baguettes without them snapping back."
     },
     "Sourdough Ciabatta": {
         "ingredients": {"Wheat Flour": 0.5389, "Water": 0.4001, "Sourdough": 0.0500, "Salt": 0.0110},
-        "hydration_info": "80%+",
+        "hydration": 82,
         "default_weight": 300,
-        "instructions": "Knåda till full glutenutveckling. Coil folds var 30:e minut. Hantera extremt varsamt vid delning för att behålla stora hål.",
-        "tips": "Använd mycket mjöl på bänken vid utbakning – degen är mycket kladdig."
+        "instructions": "Develop gluten fully. Perform coil folds every 30 min. Handle extremely gently during dividing to preserve large air pockets.",
+        "tips": "Use plenty of flour on the bench during shaping – the dough is very sticky!"
     }
 }
 
-# --- SIDEBAR ---
-st.sidebar.header("Receptinställningar")
-selected_name = st.sidebar.selectbox("Välj bröd", list(recipes.keys()))
+# --- SIDEBAR: SETTINGS & COSTING ---
+st.sidebar.header("Recipe Settings")
+selected_name = st.sidebar.selectbox("Select Bread", list(recipes.keys()))
 recipe = recipes[selected_name]
 
-units = st.sidebar.number_input("Antal enheter (st)", min_value=1, value=1)
-target_weight = st.sidebar.number_input("Vikt per styck (g)", value=recipe["default_weight"])
+units = st.sidebar.number_input("Number of units (pcs)", min_value=1, value=1)
+target_weight = st.sidebar.number_input("Weight per unit (g)", value=recipe["default_weight"])
+
+st.sidebar.divider()
+st.sidebar.header("Costing & Margin")
+flour_price = st.sidebar.number_input("Flour Price (LKR/kg)", value=224.0)
+selling_price = st.sidebar.number_input("Selling Price per unit (LKR)", value=900.0)
 
 # --- CALCULATIONS ---
 total_batch_kg = (units * target_weight) / 1000
+raw_material_cost = total_batch_kg * flour_price * 0.6  # Estimated ingredient overhead
+total_sales = units * selling_price
+total_profit = total_sales - raw_material_cost
+margin_percent = (total_profit / total_sales) * 100 if total_sales > 0 else 0
+
+# Sidebar Cost Summary
+st.sidebar.info(f"""
+**Financial Summary:**
+* Total Cost: {raw_material_cost:.0f} LKR
+* Total Sales: {total_sales:.0f} LKR
+* **Margin: {margin_percent:.1f}%**
+""")
 
 # --- MAIN DISPLAY ---
 st.header(selected_name)
@@ -70,15 +87,15 @@ st.header(selected_name)
 col_left, col_right = st.columns([3, 2])
 
 with col_left:
-    tab1, tab2 = st.tabs(["Ingredienser & Procent", "Bakinstruktioner"])
+    tab1, tab2 = st.tabs(["Ingredients & Percentages", "Baking Instructions"])
     
     with tab1:
-        st.write("### Produktionsblad")
-        # Header
+        st.write("### Production Sheet")
+        # Table Header
         h1, h2, h3 = st.columns([3, 2, 2])
-        h1.write("**Ingrediens**")
-        h2.write("**Mängd**")
-        h3.write("**% av total deg**")
+        h1.write("**Ingredient**")
+        h2.write("**Weight**")
+        h3.write("**% of Total Dough**")
         
         for ing, ratio in recipe["ingredients"].items():
             ing_weight = total_batch_kg * ratio
@@ -91,24 +108,23 @@ with col_left:
             r3.write(f"{ratio*100:.1f}%")
             
         st.divider()
-        st.info(f"Total degvikt: {total_batch_kg:.2f} kg")
+        st.metric("Total Batch Weight", f"{total_batch_kg:.2f} kg")
 
     with tab2:
-        st.write("### Steg-för-steg")
+        st.write("### Step-by-Step Guide")
         st.write(recipe["instructions"])
 
 with col_right:
-    st.subheader("Bagar-statistik")
-    st.metric("Hydration", recipe["hydration_info"])
+    st.subheader("Baker's Stats")
+    st.metric("Hydration", f"{recipe['hydration']}%")
     
     st.divider()
-    st.subheader("Pro Tips")
+    st.subheader("Pro Baking Tips")
     st.success(recipe["tips"])
     
-    st.divider()
-    st.subheader("Snabbkalkyl")
-    price_flour = st.number_input("Mjölpris (LKR/kg)", value=224.0)
-    est_cost = total_batch_kg * price_flour * 0.6
-    st.write(f"Beräknad råvarukostnad: **{est_cost:.0f} LKR**")
+    # Adding a visual guide for the Artisan Levain scoring
+    if selected_name == "Artisan Levain French Sourdough":
+        st.write("#### Scoring Technique")
+        st.write("Hold the blade at a 45-degree angle to get that perfect 'ear' and expansion.")
 
-st.caption("Monde Bakery Digital Handbook - Skapad för professionella resultat.")
+st.caption("Monde Bakery Digital Handbook - Built for professional precision.")
