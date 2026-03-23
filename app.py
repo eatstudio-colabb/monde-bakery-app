@@ -4,102 +4,88 @@ st.set_page_config(page_title="Monde Bakery Pro", layout="wide")
 
 st.title("Monde Bakery - Recipe Master Pro")
 
-# --- DATA: RECIPES ---
+# --- DATA: RECEPT ---
 recipes = {
-    "Monde Multi Grain Sourdough": {
+    "Sourdough Loaf with Walnuts": {
         "ingredients": {
-            "Wheat Bread Flour": 0.2947, 
-            "Whole Wheat Flour": 0.0810, 
-            "Rye Flour": 0.0357,
-            "Water": 0.3051, 
-            "Sourdough Starter": 0.1620, 
-            "Salt": 0.0162,
-            "Dry Yeast": 0.0162,
-            "Honey": 0.0081,
-            "Pumpkin seeds": 0.0243,
-            "Sunflower seeds": 0.0243,
-            "Red quinoa": 0.0162
+            "Wheat Bread Flour": 0.3971, 
+            "Rye Flour": 0.0394,
+            "Sourdough Starter": 0.1765, 
+            "Water": 0.3088, 
+            "Salt": 0.0132,
+            "Walnuts (Broken)": 0.0650  # Proportion baserad på din kalkylfil
         },
         "hydration": 70,
         "default_weight": 800,
         "instructions": """
-        1. **Autolyse**: Mix your flour (Wheat, Whole Wheat, Rye) and water first. Let it rest for 40 minutes. This ensures the flour is fully hydrated and the gluten is primed before the salt and starter begin their tightening effect.
+        1. **Autolyse & Blandning**: Blanda mjöl (Vete och Råg), vatten och torrjäst (om använd). Låt vila i **40 minuter**. Detta säkerställer att mjölet är helt hydrerat innan salt och surdeg tillsätts. Tillsätt sedan surdeg och salt. Knåda degen i 10 minuter.
         
-        2. **Mixing & Kneading**: Add the sourdough starter, dry yeast, honey, and salt. Knead the dough thoroughly for 10 minutes.
+        2. **Stretch and Fold**: Vid 70% hydrering behövs ingen aggressiv knådning. Gör **3–4 set** under de första 2 timmarna av bulkfermenteringen (med 30 minuters mellanrum). **Tillsätt valnötterna under de första vikningarna** för att fördela dem jämnt utan att förstöra glutenstrukturerna.
         
-        3. **Build Strength & Add Seeds**: Perform 3–4 sets of "Stretch and Fold" during the first 2 hours of bulk fermentation, spaced 30 minutes apart. **Fold in all the seeds** (Pumpkin, Sunflower, Quinoa) during these sets to ensure even distribution.
+        3. **Bulkfermentering**: Håll degen vid stabila 24–26°C. Använd **"Poke Test"**: Degen bör öka 30-50% i volym och ha en "jiggly" yta efter 3–4 timmar.
         
-        4. **Bulk Fermentation**: Keep your dough at a stable 24–26°C (75–78°F). 
+        4. **Kalljäsning**: För bäst resultat, låt brödet jäsa i kylskåp i **12–14 timmar**. Detta utvecklar smaken och gör det betydligt enklare att snitta (skapa "scars") i degen.
         
-        5. **The Poke Test**: Don't rely solely on a timer. Because of the high starter percentage, the dough may reach its limit in 3–4 hours. Look for a 30-50% increase in volume and a "jiggly" surface before shaping.
-        
-        6. **Slow Proofing**: For best results, proof the dough in the fridge for 12–14 hours. This slow proof develops deeper flavor and makes it much easier to make the scars (scores) in the dough before baking.
-        
-        7. **Maximize Oven Spring**: To get a professional "ear" and open crumb, you need a high initial heat burst. Ensure your oven and stone are fully preheated.
+        5. **Bakning & Ånga**: 
+           - **Förvärmning**: Ugn och baksten till 250°C.
+           - **Bakning**: Sänk till **245°C** när brödet sätts in.
+           - **Ånga**: Injicera **15 sekunder ånga** direkt vid start. Grädda i totalt 25–30 minuter.
         """,
-        "tips": "Adding the seeds during the folds prevents them from tearing the gluten network during the initial knead!"
+        "tips": "Rosta valnötterna lätt innan de blandas i degen för en djupare och mer nötig smak!"
     },
-    "Focaccia with Sourdough": {
-        "ingredients": {"Wheat Flour": 0.4655, "Water": 0.3335, "Sourdough Starter": 0.1817, "Salt": 0.0111, "Olive Oil": 0.0082},
-        "hydration": 72,
-        "default_weight": 500,
-        "instructions": "Autolyse 40 min (flour/water/yeast), add starter/salt, 10 min knead, 4 folds, cold proof 12-14h. Bake at 245°C with 15s steam.",
-        "tips": "Use high initial heat and plenty of olive oil for a crispy base!"
-    },
-    "Artisan Levain French Sourdough": {
-        "ingredients": {"Wheat Flour": 0.4965, "Water": 0.3308, "Sourdough Starter": 0.1613, "Salt": 0.0114},
-        "hydration": 67,
-        "default_weight": 800,
-        "instructions": "Autolyse 40 min, 4 folds, cold proof 12-14h. Bake at 245°C with steam.",
-        "tips": "Look for a jiggly surface before cold proofing."
+    "Monde Multi Grain Sourdough": {
+        "ingredients": {
+            "Wheat Bread Flour": 0.2947, "Whole Wheat Flour": 0.0810, "Rye Flour": 0.0357,
+            "Water": 0.3051, "Sourdough Starter": 0.1620, "Salt": 0.0162, "Seeds Mix": 0.1052
+        },
+        "hydration": 70,
+        "default_weight": 1000,
+        "instructions": "Autolys 40 min, tillsätt starter/salt, knåda 10 min. 4 set folds (tillsätt frön här). Kalljäs 12-14h. Baka med hög initial värme.",
+        "tips": "Vik in fröna för att inte punktera degen under knådning."
     }
 }
 
-# --- SIDEBAR: SETTINGS & COSTING ---
-st.sidebar.header("Recipe Settings")
-selected_name = st.sidebar.selectbox("Select Bread Type", list(recipes.keys()))
+# --- SIDEBAR: INSTÄLLNINGAR & KALKYL ---
+st.sidebar.header("Inställningar")
+selected_name = st.sidebar.selectbox("Välj brödsort", list(recipes.keys()))
 recipe = recipes[selected_name]
 
-units = st.sidebar.number_input("Number of Units (pcs)", min_value=1, value=1)
-target_weight = st.sidebar.number_input("Weight per Unit (g)", value=recipe["default_weight"])
+units = st.sidebar.number_input("Antal bröd (st)", min_value=1, value=5)
+target_weight = st.sidebar.number_input("Vikt per bröd (g)", value=recipe["default_weight"])
 
 st.sidebar.divider()
-st.sidebar.header("Costing & Profit Planning")
-# Raw material cost (LKR/kg)
-raw_cost_per_kg = st.sidebar.number_input("Raw Material Cost (LKR/kg)", value=224.0)
-# Planned out-price (Selling price per unit)
-selling_price = st.sidebar.number_input("Planned Selling Price (LKR/unit)", value=900.0)
+st.sidebar.header("Ekonomi & Vinst")
+raw_cost_per_kg = st.sidebar.number_input("Råvarukostnad (LKR/kg)", value=224.0)
+selling_price = st.sidebar.number_input("Försäljningspris (LKR/st)", value=900.0)
 
-# --- CALCULATIONS ---
+# --- BERÄKNINGAR ---
 total_batch_kg = (units * target_weight) / 1000
-# Estimated total cost = total weight * raw material cost (including ~25% overhead for power/labor)
-total_cost = total_batch_kg * raw_cost_per_kg * 1.25 
+total_cost = total_batch_kg * raw_cost_per_kg * 1.25 # Inkluderar 25% overhead (el/arbete)
 total_revenue = units * selling_price
 total_profit = total_revenue - total_cost
 margin_pct = (total_profit / total_revenue) * 100 if total_revenue > 0 else 0
 
-# Sidebar Financial Summary
-st.sidebar.subheader("Profit Summary")
-st.sidebar.metric("Estimated Margin", f"{margin_pct:.1f}%")
-st.sidebar.write(f"**Total Revenue:** {total_revenue:,.0f} LKR")
-st.sidebar.write(f"**Total Cost:** {total_cost:,.0f} LKR")
-st.sidebar.write(f"**Net Profit:** {total_profit:,.0f} LKR")
+# Sidebar sammanfattning
+st.sidebar.subheader("Finansiell översikt")
+st.sidebar.metric("Beräknad Marginal", f"{margin_pct:.1f}%")
+st.sidebar.write(f"**Total Intäkt:** {total_revenue:,.0f} LKR")
+st.sidebar.write(f"**Total Kostnad:** {total_cost:,.0f} LKR")
+st.sidebar.write(f"**Netto Vinst:** {total_profit:,.0f} LKR")
 
-# --- MAIN DISPLAY ---
+# --- HUVUDDISPLAY ---
 st.header(f"🍞 {selected_name}")
 
 col_left, col_right = st.columns([3, 2])
 
 with col_left:
-    tab1, tab2 = st.tabs(["Production Sheet", "Baking Instructions"])
+    tab1, tab2 = st.tabs(["Produktionsblad", "Bageri-instruktioner"])
     
     with tab1:
-        st.write("### Ingredient Breakdown")
-        # Table Header
+        st.write("### Ingredienser")
         h1, h2, h3 = st.columns([3, 2, 2])
-        h1.write("**Ingredient**")
-        h2.write("**Weight**")
-        h3.write("**% of Total**")
+        h1.write("**Ingrediens**")
+        h2.write("**Vikt**")
+        h3.write("**Procent**")
         
         for ing, ratio in recipe["ingredients"].items():
             ing_weight = total_batch_kg * ratio
@@ -112,19 +98,22 @@ with col_left:
             r3.write(f"{ratio*100:.2f}%")
             
         st.divider()
-        st.metric("Total Batch Weight", f"{total_batch_kg:.2f} kg")
+        st.metric("Total degvikt", f"{total_batch_kg:.2f} kg")
 
     with tab2:
-        st.write("### Professional Step-by-Step Guide")
+        st.write("### Professionell Guide")
         st.write(recipe["instructions"])
 
 with col_right:
-    st.subheader("Technical Specs")
-    st.metric("Hydration Level", f"{recipe['hydration']}%")
+    st.subheader("Tekniska specifikationer")
+    st.metric("Hydrering", f"{recipe['hydration']}%")
+    st.metric("Baktemperatur", "245°C")
+    st.metric("Ånga", "15 sek")
     
     st.divider()
-    st.subheader("Pro Baker's Tips")
+    st.subheader("Bagarens Tips")
     st.success(recipe["tips"])
+    
     
     st.info("💡 **Happy baking—you’re in for a rewarding baker!**")
 
