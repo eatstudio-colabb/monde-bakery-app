@@ -6,46 +6,52 @@ st.title("Monde Bakery - Recipe Master Pro")
 
 # --- DATA: RECIPES ---
 recipes = {
-    "Focaccia with Sourdough": {
+    "Monde Multi Grain Sourdough": {
         "ingredients": {
-            "Wheat Flour": 0.4655, 
-            "Water": 0.3335, 
-            "Sourdough Starter": 0.1817, 
-            "Salt": 0.0111, 
-            "Olive Oil": 0.0082
+            "Wheat Bread Flour": 0.2947, 
+            "Whole Wheat Flour": 0.0810, 
+            "Rye Flour": 0.0357,
+            "Water": 0.3051, 
+            "Sourdough Starter": 0.1620, 
+            "Salt": 0.0162,
+            "Dry Yeast": 0.0162,
+            "Honey": 0.0081,
+            "Pumpkin seeds": 0.0243,
+            "Sunflower seeds": 0.0243,
+            "Red quinoa": 0.0162
         },
+        "hydration": 70,
+        "default_weight": 800,
+        "instructions": """
+        1. **Autolyse**: Mix your flour (Wheat, Whole Wheat, Rye) and water first. Let it rest for 40 minutes. This ensures the flour is fully hydrated and the gluten is primed before the salt and starter begin their tightening effect.
+        
+        2. **Mixing & Kneading**: Add the sourdough starter, dry yeast, honey, and salt. Knead the dough thoroughly for 10 minutes.
+        
+        3. **Build Strength & Add Seeds**: Perform 3–4 sets of "Stretch and Fold" during the first 2 hours of bulk fermentation, spaced 30 minutes apart. **Fold in all the seeds** (Pumpkin, Sunflower, Quinoa) during these sets to ensure even distribution.
+        
+        4. **Bulk Fermentation**: Keep your dough at a stable 24–26°C (75–78°F). 
+        
+        5. **The Poke Test**: Don't rely solely on a timer. Because of the high starter percentage, the dough may reach its limit in 3–4 hours. Look for a 30-50% increase in volume and a "jiggly" surface before shaping.
+        
+        6. **Slow Proofing**: For best results, proof the dough in the fridge for 12–14 hours. This slow proof develops deeper flavor and makes it much easier to make the scars (scores) in the dough before baking.
+        
+        7. **Maximize Oven Spring**: To get a professional "ear" and open crumb, you need a high initial heat burst. Ensure your oven and stone are fully preheated.
+        """,
+        "tips": "Adding the seeds during the folds prevents them from tearing the gluten network during the initial knead!"
+    },
+    "Focaccia with Sourdough": {
+        "ingredients": {"Wheat Flour": 0.4655, "Water": 0.3335, "Sourdough Starter": 0.1817, "Salt": 0.0111, "Olive Oil": 0.0082},
         "hydration": 72,
         "default_weight": 500,
-        "instructions": """
-        1. **Autolyse & Yeast Prep**: Mix your flour, dry yeast, and water first. Let it rest for 40 minutes. This ensures the flour is fully hydrated and the gluten is primed before the salt begins its tightening effect.
-        
-        2. **Mixing**: Add the sourdough starter and salt. Knead the dough for 10 minutes.
-        
-        3. **Build Strength (Stretch & Fold)**: At 70%+ hydration, you don't need aggressive kneading. Perform 3–4 sets of "Stretch and Folds" during the first 2 hours of bulk fermentation, spaced 30 minutes apart. This builds a strong gluten network gradually.
-        
-        4. **Bulk Fermentation**: Keep the dough at a stable 24–26°C (75–78°F). Use the "Poke Test"—look for a 30-50% increase in volume and a "jiggly" surface before shaping (usually 3-4 hours).
-        
-        5. **Cold Proof**: For the best flavor and texture, proof the dough in the fridge for 12–14 hours. This slow proof makes it easier to handle and improves the crumb.
-        
-        6. **Maximize Oven Spring**: Preheat your oven and baking stone to 250°C (480°F). Load the focaccia and set the oven to 245°C.
-        
-        7. **Steam Control**: Inject 15 seconds of steam immediately at the start. Use plenty of steam for the first 15–20 minutes to keep the crust supple, allowing the bread to expand fully. Bake for 25-30 minutes total.
-        """,
-        "tips": "Use high initial heat and plenty of olive oil in the tray to get that signature crispy bottom and airy top!"
+        "instructions": "Autolyse 40 min (flour/water/yeast), add starter/salt, 10 min knead, 4 folds, cold proof 12-14h. Bake at 245°C with 15s steam.",
+        "tips": "Use high initial heat and plenty of olive oil for a crispy base!"
     },
     "Artisan Levain French Sourdough": {
         "ingredients": {"Wheat Flour": 0.4965, "Water": 0.3308, "Sourdough Starter": 0.1613, "Salt": 0.0114},
         "hydration": 67,
         "default_weight": 800,
-        "instructions": "Autolyse 40 min, mix salt/starter, 4 folds, cold proof 12-14h, bake at 245°C with steam.",
-        "tips": "Ensure the dough is 'jiggly' before cold proofing."
-    },
-    "Baguette with Poolish": {
-        "ingredients": {"Wheat Flour": 0.4834, "Water": 0.2417, "Poolish": 0.2417, "Salt": 0.0089, "Dry Yeast": 0.0001},
-        "hydration": 65,
-        "default_weight": 300,
-        "instructions": "5 min slow/4 min fast mix. Autolyse included. Cold proof 12-14h. Bake with 15s steam.",
-        "tips": "Steam is critical for the baguette's crust color and shine."
+        "instructions": "Autolyse 40 min, 4 folds, cold proof 12-14h. Bake at 245°C with steam.",
+        "tips": "Look for a jiggly surface before cold proofing."
     }
 }
 
@@ -59,25 +65,25 @@ target_weight = st.sidebar.number_input("Weight per Unit (g)", value=recipe["def
 
 st.sidebar.divider()
 st.sidebar.header("Costing & Profit Planning")
-flour_price = st.sidebar.number_input("Flour/Ingredient Cost (LKR/kg)", value=224.0)
-selling_price = st.sidebar.number_input("Selling Price per Unit (LKR)", value=900.0)
+# Raw material cost (LKR/kg)
+raw_cost_per_kg = st.sidebar.number_input("Raw Material Cost (LKR/kg)", value=224.0)
+# Planned out-price (Selling price per unit)
+selling_price = st.sidebar.number_input("Planned Selling Price (LKR/unit)", value=900.0)
 
 # --- CALCULATIONS ---
 total_batch_kg = (units * target_weight) / 1000
-# Cost estimation (adjusted for overhead like oil/salt/utilities)
-est_unit_cost = (total_batch_kg * flour_price * 1.25) / units 
-total_cost = est_unit_cost * units
+# Estimated total cost = total weight * raw material cost (including ~25% overhead for power/labor)
+total_cost = total_batch_kg * raw_cost_per_kg * 1.25 
 total_revenue = units * selling_price
 total_profit = total_revenue - total_cost
-margin = (total_profit / total_revenue) * 100 if total_revenue > 0 else 0
+margin_pct = (total_profit / total_revenue) * 100 if total_revenue > 0 else 0
 
 # Sidebar Financial Summary
-st.sidebar.info(f"""
-**Financial Overview:**
-* Total Batch Cost: {total_cost:.0f} LKR
-* Total Revenue: {total_revenue:.0f} LKR
-* **Profit Margin: {margin:.1f}%**
-""")
+st.sidebar.subheader("Profit Summary")
+st.sidebar.metric("Estimated Margin", f"{margin_pct:.1f}%")
+st.sidebar.write(f"**Total Revenue:** {total_revenue:,.0f} LKR")
+st.sidebar.write(f"**Total Cost:** {total_cost:,.0f} LKR")
+st.sidebar.write(f"**Net Profit:** {total_profit:,.0f} LKR")
 
 # --- MAIN DISPLAY ---
 st.header(f"🍞 {selected_name}")
@@ -89,11 +95,11 @@ with col_left:
     
     with tab1:
         st.write("### Ingredient Breakdown")
-        # Custom Table Header
+        # Table Header
         h1, h2, h3 = st.columns([3, 2, 2])
         h1.write("**Ingredient**")
         h2.write("**Weight**")
-        h3.write("**% of Total Dough**")
+        h3.write("**% of Total**")
         
         for ing, ratio in recipe["ingredients"].items():
             ing_weight = total_batch_kg * ratio
@@ -122,4 +128,4 @@ with col_right:
     
     st.info("💡 **Happy baking—you’re in for a rewarding baker!**")
 
-st.caption("Monde Bakery Digital Handbook | Precision Sourdough Management")
+st.caption("Monde Bakery Digital Handbook | Precision Management")
