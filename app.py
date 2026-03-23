@@ -6,42 +6,40 @@ st.title("Monde Bakery - Recipe Master Pro")
 
 # --- DATA: RECIPES ---
 recipes = {
+    "Sourdough Ciabatta": {
+        "ingredients": {
+            "Wheat Bread Flour": 0.5389, 
+            "Sourdough Starter": 0.1796, 
+            "Water": 0.2695, 
+            "Salt": 0.0120
+        },
+        "hydration": 80,  # Justerad för Ciabatta-stil baserat på mjöl/vatten-förhållandet
+        "default_weight": 300,
+        "instructions": """
+        1. **Autolyse & Mixing**: Mix the flour and water first. Let it rest for **40 minutes**. This ensures the flour is fully hydrated before the salt begins its tightening effect. After the rest, add the sourdough starter and salt. Knead the dough for **10 minutes**.
+        
+        2. **Stretch and Fold**: Use the **Stretch and Fold** method to build strength without aggressive kneading. Perform **3–4 sets** of folds during the first 2 hours of bulk fermentation, spaced 30 minutes apart. This builds a strong gluten network to hold the gases.
+        
+        3. **Bulk Fermentation**: Keep the dough at a stable **24–26°C (75–78°F)**. Use the **"Poke Test"**: Look for a 30-50% increase in volume and a "jiggly" surface. Due to the starter percentage, this usually takes 3–4 hours.
+        
+        4. **Cold Proofing (Recommended)**: For best results and easier handling, proof the dough in the fridge for **12–14 hours**. This slow proof makes it much easier to cut and handle the slack Ciabatta dough.
+        
+        5. **Maximize Oven Spring**: 
+           - **Preheat**: Get your oven and baking stone to **250°C (480°F)**.
+           - **Baking**: Bake at **245°C** for 25–30 minutes.
+           - **Steam**: Inject **15 seconds of steam** at the very start to keep the crust supple and allow for maximum expansion.
+        """,
+        "tips": "Handle the dough very gently after the cold proof to preserve the large air bubbles characteristic of a great Ciabatta."
+    },
     "Sourdough Loaf with Walnuts": {
         "ingredients": {
-            "Wheat Bread Flour": 0.3971, 
-            "Rye Flour": 0.0394,
-            "Sourdough Starter": 0.1765, 
-            "Water": 0.3088, 
-            "Salt": 0.0132,
-            "Walnuts (Broken)": 0.0650
+            "Wheat Bread Flour": 0.3971, "Rye Flour": 0.0394, "Sourdough Starter": 0.1765, 
+            "Water": 0.3088, "Salt": 0.0132, "Walnuts": 0.0650
         },
         "hydration": 70,
         "default_weight": 800,
-        "instructions": """
-        1. **Autolyse & Mixing**: Mix flour (Wheat and Rye), water, and dry yeast first. Let it rest for **40 minutes**. This ensures the flour is fully hydrated before adding salt and starter. Then add the sourdough starter and salt. Knead the dough for 10 minutes.
-        
-        2. **Stretch and Fold**: At 70% hydration, use the **Stretch and Fold** method. Perform **3–4 sets** during the first 2 hours of bulk fermentation (spaced 30 minutes apart). **Add the walnuts during the first folds** to distribute them evenly without tearing the gluten.
-        
-        3. **Bulk Fermentation**: Keep the dough at a stable 24–26°C. Use the **"Poke Test"**: The dough should increase 30-50% in volume and have a "jiggly" surface before shaping (approx. 3–4 hours).
-        
-        4. **Cold Proofing**: For best results, proof the dough in the fridge for **12–14 hours**. This develops flavor and makes the dough firm enough to score (create "scars") easily.
-        
-        5. **Baking & Steam**: 
-           - **Preheat**: Oven and baking stone to 250°C.
-           - **Baking**: Lower to **245°C** when loading the bread.
-           - **Steam**: Inject **15 seconds of steam** immediately at the start. Bake for a total of 25–30 minutes.
-        """,
-        "tips": "Lightly toast the walnuts before adding them to the dough for a deeper, nuttier aroma!"
-    },
-    "Monde Multi Grain Sourdough": {
-        "ingredients": {
-            "Wheat Bread Flour": 0.2947, "Whole Wheat Flour": 0.0810, "Rye Flour": 0.0357,
-            "Water": 0.3051, "Sourdough Starter": 0.1620, "Salt": 0.0162, "Seeds Mix": 0.1052
-        },
-        "hydration": 70,
-        "default_weight": 1000,
-        "instructions": "Autolyse 40 min, add starter/salt, knead 10 min. 4 sets of folds (add seeds during folds). Cold proof 12-14h. Bake with high initial heat and steam.",
-        "tips": "Fold the seeds in gently to avoid puncturing the air bubbles in the dough."
+        "instructions": "Autolyse 40 min, add starter/salt, knead 10 min. 4 sets of folds. Cold proof 12-14h. Bake at 245°C with 15s steam.",
+        "tips": "Add walnuts during the second fold."
     }
 }
 
@@ -50,8 +48,8 @@ st.sidebar.header("Settings")
 selected_name = st.sidebar.selectbox("Select Bread Type", list(recipes.keys()))
 recipe = recipes[selected_name]
 
-units = st.sidebar.number_input("Number of Loaves", min_value=1, value=5)
-target_weight = st.sidebar.number_input("Weight per Loaf (g)", value=recipe["default_weight"])
+units = st.sidebar.number_input("Number of Loaves/Pieces", min_value=1, value=20)
+target_weight = st.sidebar.number_input("Weight per Piece (g)", value=recipe["default_weight"])
 
 st.sidebar.divider()
 st.sidebar.header("Economics & Profit")
@@ -60,7 +58,7 @@ selling_price = st.sidebar.number_input("Selling Price (LKR/pc)", value=900.0)
 
 # --- CALCULATIONS ---
 total_batch_kg = (units * target_weight) / 1000
-total_cost = total_batch_kg * raw_cost_per_kg * 1.25 # Includes 25% overhead (electricity/labor)
+total_cost = total_batch_kg * raw_cost_per_kg * 1.25 # Includes 25% overhead
 total_revenue = units * selling_price
 total_profit = total_revenue - total_cost
 margin_pct = (total_profit / total_revenue) * 100 if total_revenue > 0 else 0
@@ -98,7 +96,7 @@ with col_left:
             r3.write(f"{ratio*100:.2f}%")
             
         st.divider()
-        st.metric("Total Dough Weight", f"{total_batch_kg:.2f} kg")
+        st.metric("Total Batch Weight", f"{total_batch_kg:.2f} kg")
 
     with tab2:
         st.write("### Professional Guide")
