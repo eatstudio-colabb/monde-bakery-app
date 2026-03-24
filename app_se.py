@@ -44,7 +44,7 @@ recipes = {
         },
         "hydration": 50, "default_weight": 129, "bake_temp": "175–200°C", "bake_time": "15–20 min", "finish": "Äggstrykning & Pärlsocker",
         "instructions": """
-        1. **Förberedelse & Autolys:** Blanda kall mjölk, nystött kardemumma, socker och vetemjöl. Kör maskinen på låg hastighet i ca 3 minuter. Låt vila i 30–60 minuter.
+        1. **Förberedelse & Autolys:** Blanda kall mjölk, nystött kardemumma, socker and vetemjöl. Kör maskinen på låg hastighet i ca 3 minuter. Låt vila i 30–60 minuter.
         2. **Blandning:** Tillsätt aktiv surdeg. Knåda i 8–10 minuter tills degen släpper från kanterna.
         3. **Fettemulsion:** Tillsätt salt och mata in **kallt tärnat smör** lite i taget under knådning (ca 5–8 min). Kör till godkänt fönstertest.
         4. **Bulk:** Vila 3–4 timmar. Gör en "stretch and fold" efter 60 minuter.
@@ -143,9 +143,10 @@ recipes = {
         "instructions": """
         1. **Knådning:** Knåda länge (15 min) tills degen släpper från bunken trots hög vätska.
         2. **Struktur:** Vik degen (Coil Fold) var 30:e min 4 gånger i en oljad låda.
-        3. **Dela:** Stjälp upp på mjölat bord. Skär försiktigt ut rektanglar.
-        4. **Jäs:** Vila 45 min under duk.
-        5. **Baka:** Skjut in i het ugn. Ingen snittning.
+        3. **Alternativ Jäsning:** Det går också utmärkt att kalljäsa degen 12–14 timmar i bulk och därefter placera ut degen på ett mjölat bord för hantering.
+        4. **Dela:** Stjälp upp på mjölat bord. Skär försiktigt ut rektanglar.
+        5. **Jäs:** Vila 45 min under duk.
+        6. **Baka:** Skjut in i het ugn. Ingen snittning.
         """,
         "pro_tips": "Tryck aldrig ut luften ur en ciabatta-deg."
     },
