@@ -12,11 +12,11 @@ st.markdown("""
         letter-spacing: -0.5px; 
     }
     
-    /* Röd Sourdough Guide-knapp */
+    /* BLÅ Sourdough Guide-knapp */
     div[data-testid="stSidebar"] div[data-testid="stExpander"] {
-        border: 2px solid #FF4B4B;
+        border: 2px solid #0066CC;
         border-radius: 10px;
-        background-color: #FF4B4B;
+        background-color: #0066CC;
     }
     
     div[data-testid="stSidebar"] .st-emotion-cache-p4mowd {
@@ -136,7 +136,7 @@ target_weight = st.sidebar.number_input("Target Weight (g)", value=recipe["defau
 
 st.sidebar.divider()
 
-# SOURDOUGH GUIDE
+# SOURDOUGH GUIDE (NU BLÅ)
 with st.sidebar.expander("📖 SOURDOUGH CARE GUIDE"):
     st.markdown("""
     **1. Daily Care:** Feed 1:1:1. Ready in 4-8h.
