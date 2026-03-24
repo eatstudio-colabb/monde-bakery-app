@@ -58,17 +58,17 @@ recipes = {
             "Vetemjöl Special": 0.4655, "Vatten": 0.3292, "Surdegsgrund": 0.1587, 
             "Salt": 0.0132, "Olivolja": 0.0333, "Torrjäst": 0.0001
         },
-        "hydration": 75, "default_weight": 800, "bake_temp": "245°C", "bake_time": "25-30 min", "finish": "Saltlake & Rosmarin",
+        "hydration": 75, "default_weight": 800, "bake_temp": "245°C", "bake_time": "25-30 min", "finish": "Olivolja & Rosmarin",
         "instructions": """
         1. **Mix:** Blanda mjöl, vatten, surdeg och jäst. Vila 20 min.
         2. **Knådning:** Tillsätt salt och hälften av oljan. Knåda till elastisk deg.
         3. **Bulk:** Utför 4 set "Coil Folds" var 30:e minut.
         4. **Plåt:** Olja en plåt rikligt, lägg i degen och sträck försiktigt.
         5. **Kalljäsning:** 12–18 timmar i kyl.
-        6. **Dimpling:** Häll över emulgerad saltlake och tryck djupa hål med fingrarna.
+        6. **Dimpling:** Ta ut degen 2 timmar före bakning. Ringla över generöst med högkvalitativ olivolja och tryck djupa hål med fingertopparna ända ner till plåten så att oljan fyller groparna.
         7. **Bakning:** Toppa med rosmarin och flingsalt. Baka till gyllene.
         """,
-        "pro_tips": "Saltlaken skapar ånga som gör inkråmet extremt saftigt."
+        "pro_tips": "Tryck hålen ordentligt så att oljan kapslas in, det ger de karaktäristiska saftiga groparna."
     },
     "Surdegsbröd med Valnötter": {
         "ingredients": {
