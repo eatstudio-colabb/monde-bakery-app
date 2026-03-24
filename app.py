@@ -7,7 +7,7 @@ st.markdown("""
     <style>
     h1 { font-weight: 300 !important; letter-spacing: -0.5px; }
     
-    /* Röd Sourdough Guide-knapp */
+    /* Röd Sourdough Guide-knapp i sidomenyn */
     div[data-testid="stSidebar"] div[data-testid="stExpander"] {
         border: 2px solid #FF4B4B;
         border-radius: 10px;
@@ -41,23 +41,14 @@ recipes = {
         },
         "hydration": 50, "default_weight": 129, "bake_temp": "175–200°C", "bake_time": "15–20 min", "finish": "Egg Wash & Pearl Sugar",
         "instructions": """
-        1. **Autolyse (The Soak):** Mix the cold milk, freshly ground cardamom, sugar, and flour in the mixer. Mix on low speed just until combined (2–3 minutes). Let the dough rest for 30–40 minutes. This process hydrates the flour and begins the gluten development naturally.
-        
-        2. **The Mix:** Add your active sourdough starter to the mixture. Knead on medium speed for about 8–10 minutes. The dough should start to look smooth and begin to pull away from the sides of the bowl.
-        
-        3. **Salt & Cold Butter:** Add the salt. Then, with the mixer running, add the **cold butter** (cut into small cubes) gradually. Knead for another 5–7 minutes. It is crucial that the butter is cold to ensure a strong gluten structure and a fluffy result. The dough is ready when it is glossy, elastic, and passes the "windowpane test."
-        
-        4. **Bulk Fermentation (First Rise):** Let the dough rest in a container at room temperature for about 3–4 hours. Perform one "stretch and fold" after the first 60 minutes to add strength.
-        
-        5. **The Filling:** While the dough rests, whisk together room-temperature butter, sugar, and cinnamon into a smooth paste.
-        
-        6. **Shaping:** Roll out the dough into a large rectangle. Spread the filling evenly. Fold the dough, cut into strips, twist them, and tie them into knots.
-        
-        7. **Cold Proof:** Place on a tray, cover, and refrigerate for 12–14 hours for deep flavor development.
-        
-        8. **Baking:** Take out and let sit at room temp for 30–60 mins. Brush with egg wash and sprinkle with pearl sugar. Bake until golden brown (internal temp 92–94°C).
+        1. **Autolyse (The Soak):** Mix the cold milk, freshly ground cardamom, sugar, and flour in the mixer. Mix on low speed just until combined (2–3 minutes). Let the dough rest for 30–40 minutes.
+        2. **The Mix:** Add your active sourdough starter. Knead on medium speed for about 8–10 minutes until the dough begins to pull away from the bowl.
+        3. **Salt & Cold Butter:** Add the salt. Gradually add the **cold butter** (cut into small cubes). Knead for another 5–7 minutes until glossy and elastic (passes the windowpane test).
+        4. **Bulk Fermentation:** Let the dough rest for 3–4 hours at room temperature. Perform one 'stretch and fold' after 60 minutes.
+        5. **Shaping & Cold Proof:** Spread filling, twist into knots, and refrigerate for 12–14 hours.
+        6. **Baking:** Brush with egg wash and sprinkle pearl sugar. Bake until internal temp 92–94°C.
         """,
-        "pro_tips": "Never melt the butter for the dough! Adding cold cubes at the very end of the kneading process is the secret to the perfect texture."
+        "pro_tips": "Cold butter added at the end is the secret to a fluffy, high-end bakery texture."
     },
     "Focaccia with Sourdough": {
         "ingredients": {
@@ -66,14 +57,23 @@ recipes = {
         },
         "hydration": 75, "default_weight": 800, "bake_temp": "245°C", "bake_time": "25-30 min", "finish": "Brine & Rosemary",
         "instructions": """
-        1. **Autolyse:** Blanda mjöl och vatten. Vila 40-60 min.
-        2. **Mix:** Tillsätt surdeg och jäst. Knåda 8-10 min.
-        3. **Salt & Olja:** Tillsätt salt och olivolja, knåda till smidig deg.
-        4. **Folds:** 3-4 set 'Stretch & Fold' var 30:e minut.
-        5. **Kalljäst:** 12-14h i kylen i oljad plåt.
-        6. **Dimpling:** Häll över saltlake och tryck djupa hål med fingrarna innan bakning.
+        1. **Autolyse:** Mix the bread flour and water until no dry spots remain. Let it rest for 40–60 minutes to allow natural gluten development.
+        
+        2. **The Mix:** Add the active sourdough starter and the tiny amount of dry yeast. Knead for 8–10 minutes until the dough becomes cohesive.
+        
+        3. **Salt & Oil:** Add the salt and a splash of olive oil. Knead until the dough is smooth and starts to release from the sides of the bowl. Note: The dough will be very sticky and high-hydration.
+        
+        4. **Bulk Fermentation (Folds):** Let the dough rest in a bowl. Perform 3–4 sets of 'Stretch and Folds' every 30 minutes. This builds the strength needed to hold the large air bubbles.
+        
+        5. **Pan Preparation:** Pour 2–3 tablespoons of olive oil into your baking tray. Place the dough in the tray, flip it to coat in oil, and gently stretch it toward the corners.
+        
+        6. **Cold Proof:** Cover and refrigerate for 12–14 hours. This slow cold ferment is essential for the characteristic sourdough tang and airy structure.
+        
+        7. **Dimpling & Brine:** Take the dough out 1–2 hours before baking. Whisk together a 'brine' (2 parts water, 1 part oil, a pinch of salt) until emulsified. Pour the brine over the dough. Use your fingers to press deep dimples all the way to the bottom of the tray.
+        
+        8. **Baking:** Top with fresh rosemary and sea salt. Bake at 245°C until golden and crispy on the outside.
         """,
-        "pro_tips": "Saltlaken (brine) skapar ånga i hålen vilket håller brödet saftigt."
+        "pro_tips": "The brine creates steam pockets in the dimples, keeping them soft while the rest of the surface gets crunchy."
     },
     "Artisan French Levain": {
         "ingredients": {
@@ -134,7 +134,7 @@ st.sidebar.header("Economics (LKR)")
 flour_price_kg = st.sidebar.number_input("Base Flour Price (LKR/kg)", value=224.0)
 selling_price = st.sidebar.number_input("Selling Price (per unit)", value=900.0)
 
-# --- CALCULATIONS ---
+# --- BERÄKNINGAR ---
 total_dough_kg = (units * target_weight) / 1000
 total_custom_kg = (units * custom_ing_amount) / 1000
 
@@ -184,7 +184,7 @@ with col_left:
         st.metric("Total Batch Weight", f"{(total_dough_kg + total_custom_kg):.2f} kg")
 
     with tab2:
-        st.subheader("Professional Guide")
+        st.subheader("Professional Guide (English)")
         st.write(recipe["instructions"])
     with tab3:
         st.subheader("Baker's Secrets")
