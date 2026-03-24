@@ -34,7 +34,7 @@ st.markdown("""
 
 st.title("Monde Bakery - Professionell Receptmaster")
 
-# --- RECEPTDATABAS ---
+# --- KOMPLETT RECEPTDATABAS (ALLA RECEPT PÅ SVENSKA) ---
 recipes = {
     "Svenska Kanelbullar": {
         "ingredients": {
@@ -81,6 +81,31 @@ recipes = {
         "hydration": 80, "default_weight": 850, "bake_temp": "240°C", "bake_time": "40 min", "finish": "Mjölad yta",
         "instructions": "1. 2h Autolys. 2. Blanda surdeg/salt. 3. 4 set vikningar. 4. Kalljäs 12-15h.",
         "pro_tips": "Lång autolys mjukar upp kliet."
+    },
+    "Artisan French Levain": {
+        "ingredients": {
+            "Vetemjöl Special": 0.4500, "Vatten": 0.3150, "Surdegsgrund": 0.1350, 
+            "Salt": 0.0090, "Torrjäst": 0.0001
+        },
+        "hydration": 70, "default_weight": 850, "bake_temp": "250°C", "bake_time": "35-40 min", "finish": "Ånga",
+        "instructions": "1. Autolys 60 min. 2. Blanda i surdeg/salt. 3. Stretch & Fold 3 set. 4. Forma och kalljäs 12h.",
+        "pro_tips": "Snitta i 45 graders vinkel för att få till det perfekta 'örat' på brödet."
+    },
+    "Surdegs-Ciabatta": {
+        "ingredients": {
+            "Vetemjöl Special": 0.5389, "Surdegsgrund": 0.1796, "Vatten": 0.2695, "Salt": 0.0120, "Torrjäst": 0.0001
+        },
+        "hydration": 82, "default_weight": 300, "bake_temp": "245°C", "bake_time": "25 min", "finish": "Mjölad yta",
+        "instructions": "1. Blanda högvätskig deg. 2. Intensiv vikning. 3. Dela degen försiktigt i tofflor utan att trycka ut luften.",
+        "pro_tips": "Använd rikligt med mjöl på bänken när du delar degen; den är väldigt klibbig."
+    },
+    "Baguette med Poolish": {
+        "ingredients": {
+            "Vetemjöl": 0.4834, "Vatten": 0.2417, "Poolish": 0.2660, "Salt": 0.0088, "Torrjäst": 0.0001
+        },
+        "hydration": 68, "default_weight": 350, "bake_temp": "245°C", "bake_time": "22 min", "finish": "Kraftig Ånga",
+        "instructions": "1. Gör poolish 12h innan. 2. Knåda degen 9 min. 3. Forma och jäs i linneduk.",
+        "pro_tips": "Ångan är helt avgörande för den tunna, krispiga skorpan."
     }
 }
 
@@ -142,8 +167,10 @@ with col_left:
         st.metric("Total Batchvikt", f"{total_dough_kg:.2f} kg")
 
     with tab2:
+        st.subheader("Instruktioner")
         st.write(recipe["instructions"])
     with tab3:
+        st.subheader("Hemligheter")
         st.write(recipe["pro_tips"])
 
 with col_right:
