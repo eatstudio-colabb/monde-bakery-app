@@ -2,16 +2,13 @@ import streamlit as st
 
 st.set_page_config(page_title="Monde Bakery Recipe Master", layout="wide")
 
-# --- CUSTOM CSS FOR STYLING ---
+# --- CUSTOM CSS ---
 st.markdown("""
     <style>
-    /* Smalare rubrik */
-    h1 {
-        font-weight: 300 !important;
-        letter-spacing: -0.5px;
-    }
+    /* Tunnare rubrik */
+    h1 { font-weight: 300 !important; letter-spacing: -0.5px; }
     
-    /* Röd knapp för Sourdough Guide i sidomenyn */
+    /* Röd Sourdough Guide-knapp */
     div[data-testid="stSidebar"] div[data-testid="stExpander"] {
         border: 2px solid #FF4B4B;
         border-radius: 10px;
@@ -37,17 +34,25 @@ st.markdown("""
 
 st.title("Monde Bakery - Professional Recipe Master")
 
-# --- KOMPLETT RECEPTDATABAS ---
+# --- RECEPTDATABAS ---
 recipes = {
     "Swedish Cinnamon Buns": {
         "ingredients": {
             "Dough: Wheat Flour": 0.3350, "Dough: Milk": 0.2577, "Dough: Sourdough": 0.1289,
-            "Dough: Cold Butter": 0.0805, "Dough: Sugar": 0.0548, "Dough: Cardamom": 0.0064,
+            "Dough: Cold Butter (to be added last)": 0.0805, "Dough: Sugar": 0.0548, "Dough: Cardamom": 0.0064,
             "Dough: Salt": 0.0045, "Filling: Butter": 0.0967, "Filling: Sugar": 0.0290, "Filling: Cinnamon": 0.0064
         },
         "default_weight": 129, "bake_temp": "175–200°C", "bake_time": "15–20 min", "finish": "Egg Wash",
-        "instructions": "1. Autolyse: Mix milk, cardamom, sugar and flour. Rest 30 min. 2. Mix: Add sourdough starter, knead 10 min. 3. Salt: Add salt, knead 3 min. 4. Filling: Mix butter, sugar, cinnamon. 5. Shape: Roll, spread filling, fold in three, cut strips and twist. 6. Proof: Cold proof 12h. 7. Bake: Brush with egg wash and pearl sugar.",
-        "pro_tips": "Use cold milk to control friction heat. Do not over-tighten knots. Internal temp: 92-94°C."
+        "instructions": """
+        1. **Autolyse:** Mix milk, cardamom, sugar and flour. Rest 30 min.
+        2. **Mix:** Add sourdough starter, knead 10 min until the dough starts to release from the bowl.
+        3. **Salt & Butter:** Add salt and the **cold butter** (cut into cubes). Knead for the final 3-5 minutes until the butter is fully incorporated and the dough is shiny and elastic.
+        4. **Filling:** Mix softened butter, sugar, and cinnamon.
+        5. **Shape:** Roll out, spread filling, fold and twist into knots.
+        6. **Proof:** Cold proof 12h in fridge.
+        7. **Bake:** Brush with egg wash and top with pearl sugar.
+        """,
+        "pro_tips": "The cold butter added at the end creates a stronger gluten net and a fluffier bun."
     },
     "Focaccia with Sourdough": {
         "ingredients": {
@@ -55,8 +60,8 @@ recipes = {
             "Salt": 0.0132, "Olive Oil": 0.0333, "Dry Yeast": 0.0001
         },
         "default_weight": 800, "bake_temp": "245°C", "bake_time": "25-30 min", "finish": "15s Steam",
-        "instructions": "1. Autolyse 40m. 2. Mix starter/salt (10m). 3. 3-4 sets of folds every 30m. 4. Cold proof 12-14h. 5. Dimple with brine before baking.",
-        "pro_tips": "The Brine Secret: Whisk water, oil and salt into an emulsion for the dimples."
+        "instructions": "1. Autolyse 40m. 2. Mix starter/salt (10m). 3. 3-4 sets of folds. 4. Cold proof 12-14h. 5. Dimple with brine.",
+        "pro_tips": "Use a heavy brine for the dimples to get that classic 'salty' crust."
     },
     "Monde Multi Grain Sourdough": {
         "ingredients": {
@@ -64,8 +69,8 @@ recipes = {
             "Water": 0.3051, "Sourdough Starter": 0.1620, "Salt": 0.0162, "Seeds Mix": 0.1052
         },
         "default_weight": 1000, "bake_temp": "245°C", "bake_time": "45 min", "finish": "15s Steam",
-        "instructions": "1. Autolyse 40m. 2. Mix starter/salt. 3. Stretch & Fold. 4. Incorporate seeds. 5. Cold proof 12-14h.",
-        "pro_tips": "Bake until 98°C internal. Use steam for the first 15 mins for maximum volume."
+        "instructions": "1. Autolyse 40m. 2. Mix starter/salt. 3. Stretch & Fold. 4. Add seeds. 5. Cold proof 12h.",
+        "pro_tips": "Internal temp should be 98°C for a perfect crumb."
     },
     "Sourdough Loaf with Walnuts": {
         "ingredients": {
@@ -73,24 +78,24 @@ recipes = {
             "Water": 0.3088, "Salt": 0.0132, "Walnuts": 0.0650, "Dry Yeast": 0.0001
         },
         "default_weight": 800, "bake_temp": "245°C", "bake_time": "25-30 min", "finish": "15s Steam",
-        "instructions": "1. Autolyse with yeast 40m. 2. Add starter/salt. 3. Knead 10m. 4. Fold in walnuts during first set of folds.",
-        "pro_tips": "Toast walnuts lightly before adding for better flavor."
+        "instructions": "1. Autolyse 40m. 2. Mix starter/salt. 3. Knead 10m. 4. Fold in walnuts during first set of folds.",
+        "pro_tips": "Lightly toast walnuts for deeper aroma."
     },
     "Sourdough Ciabatta": {
         "ingredients": {
             "Wheat Bread Flour": 0.5389, "Sourdough Starter": 0.1796, "Water": 0.2695, "Salt": 0.0120, "Dry Yeast": 0.0001
         },
         "default_weight": 300, "bake_temp": "245°C", "bake_time": "25-30 min", "finish": "15s Steam",
-        "instructions": "1. Autolyse 40m. 2. Mix everything. 3. 4 sets of folds. 4. Cold proof 12h. 5. Handle gently to keep bubbles.",
-        "pro_tips": "High hydration dough. Use plenty of flour on the bench."
+        "instructions": "1. Autolyse 40m. 2. High hydration mix. 3. 4 sets of folds. 4. Cold proof 12h.",
+        "pro_tips": "Handle dough extremely gently during shaping to keep big holes."
     },
     "Baguette with Poolish": {
         "ingredients": {
             "Wheat Flour": 0.4834, "Water": 0.2417, "Poolish": 0.2660, "Salt": 0.0088, "Dry Yeast": 0.0001
         },
         "default_weight": 350, "bake_temp": "245°C", "bake_time": "25-30 min", "finish": "15s Steam",
-        "instructions": "1. Prepare poolish 12h before. 2. Mix and knead 9m. 3. Bulk ferment. 4. Shape and cold proof.",
-        "pro_tips": "Score at a shallow angle for the best 'ear'."
+        "instructions": "1. Poolish 12h before. 2. Mix/Knead 9m. 3. Ferment & Shape. 4. Cold proof.",
+        "pro_tips": "Deep steam is key for the crispy thin crust."
     }
 }
 
@@ -104,26 +109,22 @@ target_weight = st.sidebar.number_input("Target Weight (g)", value=recipe["defau
 
 st.sidebar.divider()
 
-# --- SOURDOUGH GUIDE ---
+# SOURDOUGH GUIDE
 with st.sidebar.expander("📖 SOURDOUGH CARE GUIDE"):
     st.markdown("""
-    **1. Daily Care**
-    Feed 1-2 times/day at room temp (Ratio 1:1:1). Ready in 4-8h.
-    **2. Fridge Storage**
-    Feed once a week. Discard all but 1kg, feed with 2kg water + 2kg flour.
-    **3. Before Baking**
-    Feed 4-6h before use. Ready at peak.
-    **4. Troubleshooting**
-    Acetone smell = Hungry. Hooch (liquid) = Stir in and feed.
+    **1. Daily Care:** Feed 1:1:1. Ready in 4-8h.
+    **2. Storage:** Fridge storage, feed weekly (1kg starter + 2kg water + 2kg flour).
+    **3. Before Baking:** Feed 4-6h before use. 
+    **4. Troubleshooting:** Acetone smell = Hungry. Hooch = Stir in and feed.
     """)
 
 st.sidebar.divider()
 
 # CUSTOM INGREDIENT & ECONOMICS
 st.sidebar.subheader("Custom Ingredient")
-custom_ing_name = st.sidebar.text_input("Name", value="Walnuts")
+custom_ing_name = st.sidebar.text_input("Name", value="Extra Ingredient")
 custom_ing_amount = st.sidebar.number_input("Grams per unit", min_value=0, value=0)
-custom_ing_price = st.sidebar.number_input("Price (LKR/kg)", value=1500.0)
+custom_ing_price = st.sidebar.number_input("Extra Ingredient Price (LKR/kg)", value=1500.0)
 
 st.sidebar.divider()
 st.sidebar.header("Economics (LKR)")
@@ -165,18 +166,15 @@ with col_left:
         st.metric("Total Batch Weight", f"{(total_dough_kg + total_custom_kg):.2f} kg")
 
     with tab2:
-        st.subheader("Instructions")
         st.write(recipe["instructions"])
-    
     with tab3:
-        st.subheader("Professional Tips")
         st.write(recipe["pro_tips"])
 
 with col_right:
     st.subheader("Profit & Specs")
     st.metric("Net Profit", f"{total_profit:,.0f} LKR")
     st.write(f"Dough Cost: {cost_dough:,.0f} LKR")
-    st.write(f"Custom Cost: {cost_custom:,.0f} LKR")
+    st.write(f"Extra Cost: {cost_custom:,.0f} LKR")
     st.info(f"Oven: {recipe['bake_temp']} | Time: {recipe['bake_time']}")
 
 st.caption("Monde Bakery Digital Handbook | 2026")
