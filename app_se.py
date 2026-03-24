@@ -1,12 +1,12 @@
 import streamlit as st
 
-st.set_page_config(page_title="Monde Bakery Receptmaster", layout="wide")
+st.set_page_config(page_title="Chef Martins Professionell Receptmaster", layout="wide")
 
 # --- ANPASSAD CSS ---
 st.markdown("""
     <style>
     h1 { 
-        font-weight: 800 !important; 
+        font-weight: 400 !important; /* Gjort texten tunnare */
         color: #FF4B4B !important;
         letter-spacing: -0.5px; 
     }
@@ -32,7 +32,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("Monde Bakery - Professionell Receptmaster")
+st.title("Chef Martins Professionell Receptmaster")
 
 # --- RECEPTDATABAS ---
 recipes = {
@@ -192,6 +192,7 @@ revenue_sek = units * selling_price_sek
 profit_sek = revenue_sek - cost_sek
 
 # --- HUVUDDISPLAY ---
+# Titeln sätts högst upp via st.title, så här fortsätter vi med innehållet
 st.header(selected_name)
 
 col_left, col_right = st.columns([3, 2])
@@ -236,4 +237,4 @@ with col_right:
     st.info(f"Ugn: {recipe['bake_temp']} | Tid: {recipe['bake_time']}")
     st.info(f"Finish: {recipe['finish']}")
 
-st.caption("Monde Bakery Digital Handbook | 2026")
+st.caption("Chef Martins Professionell Receptmaster | 2026")
