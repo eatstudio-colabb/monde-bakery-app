@@ -2,48 +2,27 @@ import streamlit as st
 
 st.set_page_config(page_title="Monde Bakery Recipe Master", layout="wide")
 
+# --- CUSTOM CSS FÖR FÄRGAD KNAPP ---
+st.markdown("""
+    <style>
+    div[data-testid="stExpander"] {
+        border: 2px solid #FF4B4B;
+        border-radius: 5px;
+        background-color: #FFF5F5;
+    }
+    .st-emotion-cache-p4mowd {
+        color: #FF4B4B;
+        font-weight: bold;
+    }
+    </style>
+    """, unsafe_all_tags=True)
+
 st.title("Monde Bakery - Professional Recipe Master")
-
-# --- NY SEKTION: SKÖTSEL AV SURDEG ---
-with st.expander("KLICKA HÄR: Hur du sköter om din surdeg (Sourdough Care Guide)"):
-    st.subheader("Professional Sourdough Care Guide")
-    st.write("""
-    **1. Vad är en surdegsstart?**
-    En surdeg är en levande kultur av vildjäst (som får brödet att höja sig) och mjölksyrabakterier (som ger smak och syra). Den hålls vid liv genom att man regelbundet "matar" den med färskt mjöl och vatten.
-
-    **2. Daglig skötsel (Om du bakar ofta)**
-    Mata din start 1-2 gånger per dag vid rumstemperatur. 
-    * *Exempel:* 50g start + 50g vatten + 50g mjöl.
-    * Den är redo när den fördubblat sin volym, bubblar aktivt och doftar friskt syrligt (ca 4-8 timmar).
-
-    **3. Förvaring i kylskåp (Om du bakar sällan)**
-    * Förvara starten i kylskåp och mata den en gång i veckan.
-    * *Veckomatning:* Ta ut starten, släng allt utom ca 1 kg. Mata med 2 kg vatten och 2 kg mjöl. Låt stå framme 1-2 timmar innan den åker in i kylen igen.
-
-    **4. Innan bakning**
-    Ta ut starten från kylen och mata den (t.ex. 1kg vatten + 1kg mjöl). Låt stå 4-6 timmar tills den når sin topp. För extra styrka, mata den två gånger innan bakning.
-
-    **5. Vilket mjöl ska jag använda?**
-    Vete, fullkornsvete eller rågmjöl fungerar. En liten mängd råg- eller fullkornsmjöl gör ofta starten mer aktiv tack vare mer näring.
-
-    **6. Tecken på en hälsosam surdeg**
-    * Doftar fruktigt, som yoghurt eller behagligt surt.
-    * Bubblar aktivt och fördubblar sin volym.
-
-    **7. Problem & Lösningar**
-    * *Doftar aceton/alkohol:* Starten är hungrig, mata den oftare.
-    * *Vätska på toppen (Hooch):* Normalt när den är hungrig. Häll av eller rör ner och mata direkt.
-    * *Svag jäsning:* Mata den flera gånger i rad i rumstemperatur.
-
-    **8. Temperatur**
-    * 24-26°C är idealiskt för vetesurdeg. Vid 28°C+ går det väldigt snabbt och blir surare.
-    """)
 
 # --- DATA: RECIPES DATABASE ---
 recipes = {
     "Swedish Cinnamon Buns": {
         "ingredients": {
-            # Deg (Baserat på originalfilens proportioner)
             "Dough: Wheat Flour": 0.3350,
             "Dough: Milk": 0.2577,
             "Dough: Sourdough": 0.1289,
@@ -51,29 +30,13 @@ recipes = {
             "Dough: Sugar": 0.0548,
             "Dough: Cardamom": 0.0064,
             "Dough: Salt": 0.0045,
-            # Fyllning
             "Filling: Butter": 0.0967,
             "Filling: Sugar": 0.0290,
             "Filling: Cinnamon": 0.0064
         },
         "hydration": 50, "default_weight": 129, "bake_temp": "175–200°C", "bake_time": "15–20 min", "steam": "Egg Wash",
-        "instructions": """
-        1. Autolyse: Mix milk, cardamom, sugar and flour. Knead 2-3 min. Rest 30 min.
-        2. Mix: Add sourdough starter and knead 10 min. 
-        3. Salt: Add salt and knead 3 more min.
-        4. Filling: Mix softened butter, sugar, and cinnamon.
-        5. Shape: Roll, spread filling, fold in three. Cut strips and twist into knots.
-        6. Proof: Cold proof in fridge for 12 hours.
-        7. Bake: Brush with egg wash + milk. Sprinkle pearl sugar.
-        """,
-        "pro_tips": """
-        ### Deep Dive: Professional Cinnamon Bun Tips
-        * **The Cold Milk Secret:** Always use cold milk. The friction during long kneading generates heat; cold milk prevents the dough from getting too warm and weakening the gluten.
-        * **Knot Tension:** Do not pull too hard when twisting. If the knot is too tight, the center will pop out like a volcano in the oven instead of expanding evenly.
-        * **Fermentation Peak:** The 12-hour cold proof develops lactic acid, resulting in superior caramelization and crust color.
-        * **The Egg Wash Shine:** Whisk egg with a pinch of salt and milk. Let it sit for 10 min before brushing to break down proteins for a smoother, professional shine.
-        * **Internal Temp:** Take them out at 92-94°C internal temperature to ensure they stay moist.
-        """
+        "instructions": "1. Autolyse milk/sugar/flour (30m). 2. Mix starter (10m). 3. Add salt (3m). 4. Shape with filling. 5. Cold proof 12h.",
+        "pro_tips": "Use cold milk to control friction heat. Do not over-tighten knots. Internal temp: 92-94°C."
     },
     "Focaccia with Sourdough": {
         "ingredients": {
@@ -81,8 +44,8 @@ recipes = {
             "Salt": 0.0132, "Olive Oil": 0.0333, "Dry Yeast": 0.0001
         },
         "hydration": 75, "default_weight": 800, "bake_temp": "245°C", "bake_time": "25-30 min", "steam": "15 sec",
-        "instructions": "Autolyse 40m. Mix starter/salt (10m). 3-4 sets of folds. Cold proof 12-14h.",
-        "pro_tips": "The Brine Secret: Mix water, olive oil, and salt. Pour into dimples before baking."
+        "instructions": "Autolyse 40m. Mix starter/salt. 3-4 sets of folds. Cold proof 12-14h.",
+        "pro_tips": "Use a heavy brine of water and olive oil in the dimples before baking."
     },
     "Monde Multi Grain Sourdough": {
         "ingredients": {
@@ -103,6 +66,38 @@ recipe = recipes[selected_name]
 
 units = st.sidebar.number_input("Number of Units", min_value=1, value=24)
 target_weight = st.sidebar.number_input("Target Weight per unit (g)", value=recipe["default_weight"])
+
+st.sidebar.divider()
+
+# --- NY PLACERING: SURDEGSGUIDE PÅ ENGELSKA ---
+with st.sidebar.expander("📖 Sourdough Care Guide"):
+    st.info("Professional maintenance for your starter.")
+    st.write("""
+    **1. What is a Sourdough Starter?**
+    A living culture of wild yeast and lactic acid bacteria. Keep it healthy by regular feeding.
+
+    **2. Daily Care (Frequent Baking)**
+    Feed 1-2 times/day at room temp. 
+    * Ratio: 1 part starter + 1 part water + 1 part flour.
+    * Ready when doubled in volume (approx. 4-8 hours).
+
+    **3. Cold Storage (Infrequent Baking)**
+    * Keep in fridge, feed once a week.
+    * Weekly: Keep 1kg starter, add 2kg water + 2kg flour. Let sit for 1-2h before refrigerating.
+
+    **4. Before Baking**
+    Take out of fridge and feed (e.g., 1kg water + 1kg flour). Wait 4-6h until peak activity.
+
+    **5. Flour Choice**
+    Wheat, Whole Wheat, or Rye. Adding a bit of Rye makes it more active.
+
+    **6. Signs of Health**
+    Fruity/yogurty smell, active bubbling, doubling in size.
+
+    **7. Troubleshooting**
+    * *Acetone smell:* Hungry starter, feed more often.
+    * *Liquid on top (Hooch):* Normal hunger sign. Stir in or pour off, then feed.
+    """)
 
 st.sidebar.divider()
 st.sidebar.subheader("Custom Ingredient")
@@ -130,8 +125,8 @@ with col_left:
     with tab1:
         st.subheader("Full Ingredients Breakdown")
         st.write(f"Calculating for {units} units at {target_weight}g each.")
-        
         st.markdown("---")
+        
         c1, c2, c3 = st.columns([3, 2, 1])
         c1.write("**Ingredient Name**")
         c2.write("**Required Weight**")
@@ -159,7 +154,7 @@ with col_left:
         st.metric("Total Batch Dough Weight", f"{total_dough_mass:.2f} kg")
 
     with tab2:
-        st.subheader("Step-by-Step Guide")
+        st.subheader("Process")
         st.write(recipe["instructions"])
         
     with tab3:
