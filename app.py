@@ -31,7 +31,7 @@ st.markdown("""
 
 st.title("Monde Bakery - Professional Recipe Master")
 
-# --- KOMPLETT RECEPTDATABAS ---
+# --- KOMPLETT RECEPTDATABAS (ALLA RECEPT) ---
 recipes = {
     "Swedish Cinnamon Buns": {
         "ingredients": {
@@ -48,7 +48,7 @@ recipes = {
         5. **Shape & Proof:** Spread filling, twist into knots. Cold proof 12–14h in fridge.
         6. **Bake:** Brush with egg wash, add pearl sugar. Bake to internal temp 92–94°C.
         """,
-        "pro_tips": "Cold butter added at the end is the secret to a fluffy, high-end bakery texture."
+        "pro_tips": "Cold butter added at the end is the secret to a fluffy bakery texture."
     },
     "Focaccia with Sourdough": {
         "ingredients": {
@@ -59,13 +59,30 @@ recipes = {
         "instructions": """
         1. **Autolyse:** Mix flour and water. Rest 40–60 min.
         2. **Mix:** Add starter and yeast. Knead 8–10 min.
-        3. **Salt & Oil:** Add salt and olive oil. Knead until smooth but sticky.
+        3. **Salt & Oil:** Add salt and olive oil. Knead until smooth.
         4. **Bulk:** 3–4 sets of 'Stretch and Folds' every 30 min.
         5. **Prep:** Place in oiled tray. Cold proof 12–14h in fridge.
         6. **Brine & Dimple:** Pour brine (water/oil/salt) over dough. Press deep dimples with fingers.
         7. **Bake:** Add rosemary and sea salt. Bake at 245°C.
         """,
-        "pro_tips": "The brine creates steam pockets that keep the dimples soft while the crust gets crunchy."
+        "pro_tips": "The brine keeps the dimples soft while the crust gets crunchy."
+    },
+    "Sourdough Loaf with Walnuts": {
+        "ingredients": {
+            "Wheat Bread Flour": 0.3971, "Rye Flour": 0.0394, "Sourdough Starter": 0.1765, 
+            "Water": 0.3088, "Salt": 0.0132, "Walnuts": 0.0650, "Dry Yeast": 0.0001
+        },
+        "hydration": 70, "default_weight": 800, "bake_temp": "245°C", "bake_time": "30-35 min", "finish": "15s Steam",
+        "instructions": """
+        1. **Prepare Walnuts:** Lightly toast the walnuts in the oven for 5-8 minutes and let them cool.
+        2. **Autolyse:** Mix wheat flour, rye flour, and water. Rest for 40-60 minutes.
+        3. **Mix:** Add active sourdough starter and yeast. Knead for 10 minutes until the dough is strong.
+        4. **Salt & Fold:** Add salt and knead for another 2 minutes. 
+        5. **Incorporate Walnuts:** During the first set of 'Stretch and Folds', gently fold in the toasted walnuts so they are evenly distributed.
+        6. **Cold Proof:** Perform 3 sets of folds. Place in a proofing basket and refrigerate for 12–14 hours.
+        7. **Bake:** Score the loaf and bake at 245°C with 15 seconds of initial steam.
+        """,
+        "pro_tips": "Toasting the walnuts first is crucial; it prevents them from turning the dough purple and enhances the flavor."
     },
     "Monde Multi Grain Sourdough": {
         "ingredients": {
@@ -73,15 +90,8 @@ recipes = {
             "Water": 0.3051, "Sourdough Starter": 0.1620, "Salt": 0.0162, "Seeds Mix": 0.1052
         },
         "hydration": 72, "default_weight": 1000, "bake_temp": "245°C", "bake_time": "45 min", "finish": "15s Steam",
-        "instructions": """
-        1. **Soak:** Soak the seed mix in boiling water for 30 min (then drain) before adding to dough.
-        2. **Autolyse:** Mix flours and water. Rest 40 min.
-        3. **Mix:** Add starter and salt. Knead 10 min.
-        4. **Add Seeds:** Gently fold in the soaked seeds during the first set of folds.
-        5. **Bulk & Proof:** 3 sets of folds. Cold proof 12h.
-        6. **Bake:** Use steam for the first 15 min. Bake until internal temp 98°C.
-        """,
-        "pro_tips": "Soaking seeds prevents them from sucking moisture out of your dough."
+        "instructions": "1. Soak seeds. 2. Autolyse flours. 3. Mix starter/salt. 4. Fold in seeds. 5. Cold proof 12h.",
+        "pro_tips": "Bake until internal temp reaches 98°C for a perfect crumb."
     },
     "Artisan Whole Wheat": {
         "ingredients": {
@@ -89,15 +99,8 @@ recipes = {
             "Sourdough Starter": 0.1800, "Salt": 0.0120, "Honey/Malt": 0.0080
         },
         "hydration": 80, "default_weight": 850, "bake_temp": "240°C", "bake_time": "40 min", "finish": "Flour Dust",
-        "instructions": """
-        1. **Long Autolyse:** Mix flours, water, and honey. Rest for 2 hours (essential for whole wheat).
-        2. **Mix:** Add starter and salt. Knead until strong.
-        3. **Bulk:** 4 sets of folds every 30 min.
-        4. **Shape:** Shape into batards or boules. Use a proofing basket with plenty of flour.
-        5. **Cold Proof:** 12–15h in fridge.
-        6. **Bake:** Score deeply. Bake with steam.
-        """,
-        "pro_tips": "Whole wheat needs a longer autolyse to soften the bran and prevent a 'tight' crumb."
+        "instructions": "1. Long autolyse (2h). 2. Mix starter/salt. 3. 4 sets of folds. 4. Cold proof 12-15h.",
+        "pro_tips": "A long autolyse is essential for whole wheat to soften the bran."
     },
     "Artisan French Levain": {
         "ingredients": {
@@ -105,7 +108,7 @@ recipes = {
             "Salt": 0.0090, "Dry Yeast": 0.0001
         },
         "hydration": 70, "default_weight": 850, "bake_temp": "250°C", "bake_time": "35-40 min", "finish": "Steam",
-        "instructions": "1. Autolyse 60m. 2. Mix starter/salt. 3. Stretch & Fold 3 sets. 4. Shape and cold proof 12h.",
+        "instructions": "1. Autolyse 60m. 2. Mix starter/salt. 3. Stretch & Fold 3 sets. 4. Cold proof 12h.",
         "pro_tips": "Deep scoring at a 45-degree angle for a perfect 'ear'."
     },
     "Sourdough Ciabatta": {
@@ -113,8 +116,8 @@ recipes = {
             "Wheat Bread Flour": 0.5389, "Sourdough Starter": 0.1796, "Water": 0.2695, "Salt": 0.0120, "Dry Yeast": 0.0001
         },
         "hydration": 82, "default_weight": 300, "bake_temp": "245°C", "bake_time": "25 min", "finish": "Flour Dust",
-        "instructions": "1. High hydration mix. 2. Intensive folding. 3. Cut into slippers, handle with care.",
-        "pro_tips": "Use plenty of flour on the bench to handle the high hydration."
+        "instructions": "1. High hydration mix. 2. Intensive folding. 3. Handle with care during shaping.",
+        "pro_tips": "Use plenty of flour on the bench to prevent sticking."
     },
     "Baguette with Poolish": {
         "ingredients": {
@@ -158,7 +161,7 @@ st.sidebar.header("Economics (LKR)")
 flour_price_kg = st.sidebar.number_input("Base Flour Price (LKR/kg)", value=224.0)
 selling_price = st.sidebar.number_input("Selling Price (per unit)", value=900.0)
 
-# --- CALCULATIONS ---
+# --- BERÄKNINGAR ---
 total_dough_kg = (units * target_weight) / 1000
 total_custom_kg = (units * custom_ing_amount) / 1000
 
