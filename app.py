@@ -2,7 +2,8 @@ import streamlit as st
 
 st.set_page_config(page_title="Monde Bakery Recipe Master", layout="wide")
 
-# --- CUSTOM CSS FÖR FÄRGAD KNAPP ---
+# --- CUSTOM CSS FOR COLORED EXPANDER BUTTON ---
+# Fixade felet: unsafe_allow_html=True är det korrekta namnet
 st.markdown("""
     <style>
     div[data-testid="stExpander"] {
@@ -11,11 +12,11 @@ st.markdown("""
         background-color: #FFF5F5;
     }
     .st-emotion-cache-p4mowd {
-        color: #FF4B4B;
-        font-weight: bold;
+        color: #FF4B4B !important;
+        font-weight: bold !important;
     }
     </style>
-    """, unsafe_all_tags=True)
+    """, unsafe_allow_html=True)
 
 st.title("Monde Bakery - Professional Recipe Master")
 
@@ -69,7 +70,7 @@ target_weight = st.sidebar.number_input("Target Weight per unit (g)", value=reci
 
 st.sidebar.divider()
 
-# --- NY PLACERING: SURDEGSGUIDE PÅ ENGELSKA ---
+# --- SIDEBAR: SOURDOUGH GUIDE ---
 with st.sidebar.expander("📖 Sourdough Care Guide"):
     st.info("Professional maintenance for your starter.")
     st.write("""
