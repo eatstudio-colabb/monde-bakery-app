@@ -31,7 +31,7 @@ st.markdown("""
 
 st.title("Monde Bakery - Professional Recipe Master")
 
-# --- RECEPTDATABAS MED HYDRERING OCH PROCENT ---
+# --- KOMPLETT RECEPTDATABAS ---
 recipes = {
     "Swedish Cinnamon Buns": {
         "ingredients": {
@@ -41,15 +41,16 @@ recipes = {
         },
         "hydration": 50, "default_weight": 129, "bake_temp": "175–200°C", "bake_time": "15–20 min", "finish": "Egg Wash",
         "instructions": """
-        1. **Autolyse:** Blanda mjölk, kardemumma, socker och mjöl. Vila 30-40 min.
-        2. **Mix:** Tillsätt surdeg, knåda 8-10 min i maskin.
-        3. **Salt & Smör:** Tillsätt salt och sedan det **kalla smöret** i tärningar. Knåda ytterligare 5-7 min tills degen är glansig och klarar 'fönstertestet'.
-        4. **Vila:** Låt degen vila 3-4 timmar i rumstemp.
-        5. **Forma:** Kavla ut, bred på fyllning, vik och gör knutar.
-        6. **Kalljäst:** Jäs i kylskåp 12-14 timmar.
-        7. **Bakning:** Pensla med ägg, på med pärlsocker och baka till innertemp 92-94°C.
+        1. **Autolyse:** Blanda kall mjölk, nystött kardemumma, socker och mjöl. Kör i maskin på låg fart 2-3 min. Låt vila 30-40 min.
+        2. **Mix:** Tillsätt surdeg, knåda 8-10 min på medelhastighet tills degen börjar släppa från kanterna.
+        3. **Salt & Smör:** Tillsätt salt. Tillsätt sedan det **kalla smöret** i små tärningar pö om pö. Knåda 5-7 min till. Degen ska vara glansig, elastisk och klara fönstertestet.
+        4. **Vila:** Låt degen vila 3-4 timmar i rumstemp. Gör ett 'stretch and fold' efter 60 min.
+        5. **Fyllning:** Vispa ihop rumstempererat smör, socker och kanel.
+        6. **Forma:** Kavla ut, bred på fyllning, vik och gör knutar.
+        7. **Kalljäst:** Placera på plåt och jäs i kylskåp 12-14 timmar.
+        8. **Bakning:** Pensla med ägg, på med pärlsocker och baka till innertemp 92-94°C.
         """,
-        "pro_tips": "Kallt smör i slutet av knådningen är hemligheten bakom en luftig bulle med perfekt struktur."
+        "pro_tips": "Smält aldrig smöret till degen! Kalla tärningar i slutet ger bäst struktur."
     },
     "Focaccia with Sourdough": {
         "ingredients": {
@@ -58,23 +59,50 @@ recipes = {
         },
         "hydration": 75, "default_weight": 800, "bake_temp": "245°C", "bake_time": "25-30 min", "finish": "Brine & Rosemary",
         "instructions": """
-        1. **Autolyse:** Blanda mjöl och vatten (40-60 min).
+        1. **Autolyse:** Blanda mjöl och vatten. Vila 40-60 min.
         2. **Mix:** Tillsätt surdeg och jäst. Knåda 8-10 min.
-        3. **Salt & Olja:** Tillsätt salt och olja, knåda till smidig deg.
-        4. **Folds:** Gör 3-4 set 'Stretch & Fold' var 30:e minut.
-        5. **Kalljäst:** 12-14h i kylen i oljad plåt.
-        6. **Dimpling:** Häll över saltlake (vatten/olja/salt) och tryck djupa hål med fingrarna. Baka direkt på 245°C.
+        3. **Salt & Olja:** Tillsätt salt och en skvätt olivolja, knåda till smidig men klibbig deg.
+        4. **Folds:** Gör 3-4 set 'Stretch & Fold' var 30:e minut under bulkjäsningen.
+        5. **Plåt:** Häll 2-3 msk olja i en långpanna. Lägg i degen och vänd den i oljan.
+        6. **Kalljäst:** 12-14h i kylen.
+        7. **Dimpling:** Ta ut degen 1-2h innan bakning. Vispa ihop saltlake (vatten/olja/salt) tills vit. Häll över och tryck djupa hål med fingrarna.
+        8. **Bakning:** På med rosmarin och flingsalt. Baka i 245°C.
         """,
-        "pro_tips": "Saltlaken (brine) skapar ånga i hålen vilket håller brödet saftigt inuti och krispigt utanpå."
+        "pro_tips": "Saltlaken (brine) är nyckeln till de mjuka hålen och den krispiga ytan."
     },
-    "Monde Multi Grain Sourdough": {
+    "Artisan French Levain": {
+        "ingredients": {
+            "Wheat Bread Flour": 0.4500, "Water": 0.3150, "Sourdough Starter": 0.1350, 
+            "Salt": 0.0090, "Dry Yeast": 0.0001
+        },
+        "hydration": 70, "default_weight": 850, "bake_temp": "250°C", "bake_time": "35-40 min", "finish": "Steam",
+        "instructions": "1. Autolyse 60m. 2. Mix starter/salt. 3. Stretch & Fold 3 sets. 4. Pre-shape, rest 20m. 5. Shape and cold proof 12h.",
+        "pro_tips": "Deep scoring at a 45-degree angle for a perfect 'ear'."
+    },
+    "Sourdough Ciabatta": {
+        "ingredients": {
+            "Wheat Bread Flour": 0.5389, "Sourdough Starter": 0.1796, "Water": 0.2695, "Salt": 0.0120, "Dry Yeast": 0.0001
+        },
+        "hydration": 82, "default_weight": 300, "bake_temp": "245°C", "bake_time": "25 min", "finish": "Flour Dust",
+        "instructions": "1. High hydration mix. 2. Intensive folding. 3. Ferment until bubbly. 4. Cut into slippers, handle with care.",
+        "pro_tips": "Use lots of flour on the bench to prevent sticking."
+    },
+    "Baguette with Poolish": {
+        "ingredients": {
+            "Wheat Flour": 0.4834, "Water": 0.2417, "Poolish": 0.2660, "Salt": 0.0088, "Dry Yeast": 0.0001
+        },
+        "hydration": 68, "default_weight": 350, "bake_temp": "245°C", "bake_time": "22 min", "finish": "Heavy Steam",
+        "instructions": "1. Poolish 12h before. 2. Mix/Knead 9m. 3. Shape and proof in floured linen.",
+        "pro_tips": "Don't over-proof; baguettes need oven spring."
+    },
+    "Monde Multi Grain": {
         "ingredients": {
             "Wheat Bread Flour": 0.2947, "Whole Wheat Flour": 0.0810, "Rye Flour": 0.0357,
             "Water": 0.3051, "Sourdough Starter": 0.1620, "Salt": 0.0162, "Seeds Mix": 0.1052
         },
         "hydration": 72, "default_weight": 1000, "bake_temp": "245°C", "bake_time": "45 min", "finish": "Steam",
-        "instructions": "Autolyse 40m. Mix starter/salt. Stretch & Fold. Kalljäst 12h.",
-        "pro_tips": "Innertemp 98°C för perfekt resultat."
+        "instructions": "1. Soak seeds. 2. Mix and fold. 3. Bake until internal 98°C.",
+        "pro_tips": "The rye flour adds extra activity to the fermentation."
     }
 }
 
@@ -91,9 +119,10 @@ st.sidebar.divider()
 # SOURDOUGH GUIDE
 with st.sidebar.expander("📖 SOURDOUGH CARE GUIDE"):
     st.markdown("""
-    **Daily Care:** Feed 1:1:1. Ready in 4-8h.
-    **Storage:** Fridge, feed weekly (1kg starter + 2kg water + 2kg flour).
-    **Troubleshoot:** Acetone smell = Hungry.
+    **1. Daily Care:** Feed 1:1:1. Ready in 4-8h.
+    **2. Storage:** Fridge storage, feed weekly (1kg starter + 2kg water + 2kg flour).
+    **3. Before Baking:** Feed 4-6h before use. 
+    **4. Troubleshooting:** Acetone smell = Hungry. Hooch = Stir in/pour off and feed.
     """)
 
 st.sidebar.divider()
@@ -102,14 +131,14 @@ st.sidebar.divider()
 st.sidebar.subheader("Custom Ingredient")
 custom_ing_name = st.sidebar.text_input("Name", value="Walnuts/Extra")
 custom_ing_amount = st.sidebar.number_input("Grams per unit", min_value=0, value=0)
-custom_ing_price = st.sidebar.number_input("Price (LKR/kg)", value=1200.0)
+custom_ing_price = st.sidebar.number_input("Price (LKR/kg)", value=1500.0)
 
 st.sidebar.divider()
 st.sidebar.header("Economics (LKR)")
 flour_price_kg = st.sidebar.number_input("Base Flour Price (LKR/kg)", value=224.0)
 selling_price = st.sidebar.number_input("Selling Price (per unit)", value=900.0)
 
-# --- CALCULATIONS ---
+# --- BERÄKNINGAR ---
 total_dough_kg = (units * target_weight) / 1000
 total_custom_kg = (units * custom_ing_amount) / 1000
 
@@ -133,7 +162,6 @@ with col_left:
         st.write(f"Batch: {units} units x {target_weight}g | **Hydration: {recipe['hydration']}%**")
         st.markdown("---")
         
-        # Skapa tabell-liknande layout för procenten
         c1, c2, c3 = st.columns([3, 2, 1])
         c1.write("**Ingredient**")
         c2.write("**Weight**")
@@ -160,16 +188,18 @@ with col_left:
         st.metric("Total Batch Weight", f"{(total_dough_kg + total_custom_kg):.2f} kg")
 
     with tab2:
+        st.subheader("Step-by-Step Guide")
         st.write(recipe["instructions"])
     with tab3:
+        st.subheader("Professional Tips")
         st.write(recipe["pro_tips"])
 
 with col_right:
-    st.subheader("Financial Summary")
+    st.subheader("Economics")
     st.metric("Net Profit", f"{total_profit:,.0f} LKR")
-    st.write(f"Base Cost: {cost_dough:,.0f} LKR")
+    st.write(f"Base Dough Cost: {cost_dough:,.0f} LKR")
     if custom_ing_amount > 0:
-        st.write(f"Extra Cost: {cost_custom:,.0f} LKR")
+        st.write(f"Extra Ingredient Cost: {cost_custom:,.0f} LKR")
     st.divider()
     st.info(f"Oven: {recipe['bake_temp']} | Time: {recipe['bake_time']}")
     st.info(f"Finish: {recipe['finish']}")
