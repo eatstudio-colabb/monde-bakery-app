@@ -5,12 +5,19 @@ st.set_page_config(page_title="Chef Martins Professionell Receptmaster", layout=
 # --- ANPASSAD CSS ---
 st.markdown("""
     <style>
+    /* Huvudrubrik */
     h1 { 
         font-weight: 400 !important; 
         color: #FF4B4B !important;
         letter-spacing: -0.5px; 
     }
     
+    /* Gör all text i recepten tunnare (steg, tips, ingredienser) */
+    .stMarkdown p, .stMarkdown li, [data-testid="stExpanderDetails"] p {
+        font-weight: 300 !important;
+    }
+    
+    /* Sidomeny styling */
     div[data-testid="stSidebar"] div[data-testid="stExpander"] {
         border: 2px solid #0066CC;
         border-radius: 10px;
