@@ -63,11 +63,10 @@ recipes = {
         1. **Mix:** Blanda mjöl, vatten, surdeg och jäst. Vila 20 min.
         2. **Knådning:** Tillsätt salt och hälften av oljan. Knåda till elastisk deg.
         3. **Bulk:** Utför 4 set "Coil Folds" var 30:e minut.
-        4. **Alternativ Jäsning:** Det går också utmärkt att kalljäsa degen 12–14 timmar direkt i bulkbehållaren i kylen och därefter placera ut degen på ett mjölat bord för hantering.
-        5. **Plåt:** Olja en plåt rikligt, lägg i degen och sträck försiktigt.
-        6. **Kalljäsning:** 12–18 timmar i kyl (om steg 4 hoppades över).
-        7. **Dimpling:** Ta ut degen 2 timmar före bakning. Ringla över generöst med högkvalitativ olivolja och tryck djupa hål med fingertopparna ända ner till plåten så att oljan fyller groparna.
-        8. **Bakning:** Toppa med rosmarin och flingsalt. Baka till gyllene.
+        4. **Plåt:** Olja en plåt rikligt, lägg i degen och sträck försiktigt.
+        5. **Kalljäsning:** 12–18 timmar i kyl.
+        6. **Dimpling:** Ta ut degen 2 timmar före bakning. Ringla över generöst med högkvalitativ olivolja och tryck djupa hål med fingertopparna ända ner till plåten så att oljan fyller groparna.
+        7. **Bakning:** Toppa med rosmarin och flingsalt. Baka till gyllene.
         """,
         "pro_tips": "Tryck hålen ordentligt så att oljan kapslas in, det ger de karaktäristiska saftiga groparna."
     },
