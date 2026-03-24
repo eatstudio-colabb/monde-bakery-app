@@ -1,5 +1,4 @@
 import streamlit as st
-import os
 
 st.set_page_config(page_title="Chef Martins Professionell Receptmaster", layout="wide")
 
@@ -9,8 +8,7 @@ st.markdown("""
     h1 { 
         font-weight: 400 !important; 
         color: #FF4B4B !important;
-        letter-spacing: -0.5px;
-        margin-top: -20px; /* Flyttar upp texten lite mot bilden */
+        letter-spacing: -0.5px; 
     }
     
     div[data-testid="stSidebar"] div[data-testid="stExpander"] {
@@ -33,15 +31,6 @@ st.markdown("""
     }
     </style>
     """, unsafe_allow_html=True)
-
-# --- LOGOTYP OCH RUBRIK ---
-# Vi använder kolumner för att kunna centrera eller placera loggan snyggt
-logga_path = "logga Martin Löf copy.png"
-
-if os.path.exists(logga_path):
-    st.image(logga_path, width=150) # Du kan justera storleken här
-else:
-    st.warning("Logotypen hittades inte. Se till att filnamnet är korrekt.")
 
 st.title("Chef Martins Professionell Receptmaster")
 
@@ -71,7 +60,7 @@ recipes = {
         },
         "hydration": 75, "default_weight": 800, "bake_temp": "245°C", "bake_time": "25-30 min", "finish": "Olivolja & Rosmarin",
         "instructions": """
-        1. **Mix:** Blanda mjöl, vatten, surdeg och jäst. Vila 20 min.
+        1. **Mix:** Blanda mjöl, vatten, surdeg and jäst. Vila 20 min.
         2. **Knådning:** Tillsätt salt och hälften av oljan. Knåda till elastisk deg.
         3. **Bulk:** Utför 4 set "Coil Folds" var 30:e minut.
         4. **Plåt:** Olja en plåt rikligt, lägg i degen och sträck försiktigt.
