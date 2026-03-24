@@ -31,7 +31,7 @@ st.markdown("""
 
 st.title("Monde Bakery - Professional Recipe Master")
 
-# --- KOMPLETT RECEPTDATABAS (ALLA RECEPT) ---
+# --- KOMPLETT RECEPTDATABAS ---
 recipes = {
     "Swedish Cinnamon Buns": {
         "ingredients": {
@@ -74,15 +74,14 @@ recipes = {
         },
         "hydration": 70, "default_weight": 800, "bake_temp": "245°C", "bake_time": "30-35 min", "finish": "15s Steam",
         "instructions": """
-        1. **Prepare Walnuts:** Lightly toast the walnuts in the oven for 5-8 minutes and let them cool.
-        2. **Autolyse:** Mix wheat flour, rye flour, and water. Rest for 40-60 minutes.
-        3. **Mix:** Add active sourdough starter and yeast. Knead for 10 minutes until the dough is strong.
-        4. **Salt & Fold:** Add salt and knead for another 2 minutes. 
-        5. **Incorporate Walnuts:** During the first set of 'Stretch and Folds', gently fold in the toasted walnuts so they are evenly distributed.
-        6. **Cold Proof:** Perform 3 sets of folds. Place in a proofing basket and refrigerate for 12–14 hours.
-        7. **Bake:** Score the loaf and bake at 245°C with 15 seconds of initial steam.
+        1. **Prepare Walnuts:** Lightly toast walnuts (5-8 min) and let cool.
+        2. **Autolyse:** Mix wheat flour, rye flour, and water. Rest 40-60 min.
+        3. **Mix:** Add starter and yeast. Knead 10 min.
+        4. **Salt & Walnuts:** Add salt. During first fold, gently incorporate toasted walnuts.
+        5. **Proof:** 3 sets of folds. Place in basket and refrigerate 12–14h.
+        6. **Bake:** Score and bake at 245°C with steam.
         """,
-        "pro_tips": "Toasting the walnuts first is crucial; it prevents them from turning the dough purple and enhances the flavor."
+        "pro_tips": "Toasting walnuts enhances flavor and prevents the dough from turning purple."
     },
     "Monde Multi Grain Sourdough": {
         "ingredients": {
@@ -90,7 +89,7 @@ recipes = {
             "Water": 0.3051, "Sourdough Starter": 0.1620, "Salt": 0.0162, "Seeds Mix": 0.1052
         },
         "hydration": 72, "default_weight": 1000, "bake_temp": "245°C", "bake_time": "45 min", "finish": "15s Steam",
-        "instructions": "1. Soak seeds. 2. Autolyse flours. 3. Mix starter/salt. 4. Fold in seeds. 5. Cold proof 12h.",
+        "instructions": "1. Soak seeds. 2. Autolyse. 3. Mix starter/salt. 4. Fold in seeds. 5. Cold proof 12h.",
         "pro_tips": "Bake until internal temp reaches 98°C for a perfect crumb."
     },
     "Artisan Whole Wheat": {
@@ -150,24 +149,17 @@ with st.sidebar.expander("📖 SOURDOUGH CARE GUIDE"):
 
 st.sidebar.divider()
 
-# CUSTOM INGREDIENT & ECONOMICS
-st.sidebar.subheader("Custom Ingredient")
-custom_ing_name = st.sidebar.text_input("Name", value="Walnuts/Extra")
-custom_ing_amount = st.sidebar.number_input("Grams per unit", min_value=0, value=0)
-custom_ing_price = st.sidebar.number_input("Price (LKR/kg)", value=1500.0)
-
-st.sidebar.divider()
+# ECONOMICS
 st.sidebar.header("Economics (LKR)")
 flour_price_kg = st.sidebar.number_input("Base Flour Price (LKR/kg)", value=224.0)
 selling_price = st.sidebar.number_input("Selling Price (per unit)", value=900.0)
 
-# --- BERÄKNINGAR ---
+# --- CALCULATIONS ---
 total_dough_kg = (units * target_weight) / 1000
-total_custom_kg = (units * custom_ing_amount) / 1000
 
+# Cost calculation (including 25% overhead)
 cost_dough = total_dough_kg * flour_price_kg
-cost_custom = total_custom_kg * custom_ing_price
-total_prod_cost = (cost_dough + cost_custom) * 1.25
+total_prod_cost = cost_dough * 1.25
 
 total_revenue = units * selling_price
 total_profit = total_revenue - total_prod_cost
@@ -199,16 +191,9 @@ with col_left:
             r1.write(ing)
             r2.write(f"**{val:.2f} {unit}**")
             r3.write(f"{ratio*100:.1f}%")
-            
-        if custom_ing_amount > 0:
-            r1, r2, r3 = st.columns([3, 2, 1])
-            r1.write(custom_ing_name)
-            c_val = total_custom_kg if total_custom_kg >= 1 else total_custom_kg * 1000
-            r2.write(f"**{c_val:.2f} {'kg' if total_custom_kg >= 1 else 'g'}**")
-            r3.write("Extra")
         
         st.markdown("---")
-        st.metric("Total Batch Weight", f"{(total_dough_kg + total_custom_kg):.2f} kg")
+        st.metric("Total Batch Weight", f"{total_dough_kg:.2f} kg")
 
     with tab2:
         st.subheader("Professional Guide")
@@ -220,9 +205,7 @@ with col_left:
 with col_right:
     st.subheader("Economics")
     st.metric("Net Profit", f"{total_profit:,.0f} LKR")
-    st.write(f"Dough Cost: {cost_dough:,.0f} LKR")
-    if custom_ing_amount > 0:
-        st.write(f"Extra Cost: {cost_custom:,.0f} LKR")
+    st.write(f"Production Cost (Inc. 25% overhead): {total_prod_cost:,.0f} LKR")
     st.divider()
     st.info(f"Oven: {recipe['bake_temp']} | Time: {recipe['bake_time']}")
     st.info(f"Finish: {recipe['finish']}")
