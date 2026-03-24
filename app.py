@@ -5,7 +5,12 @@ st.set_page_config(page_title="Monde Bakery Recipe Master", layout="wide")
 # --- CUSTOM CSS ---
 st.markdown("""
     <style>
-    h1 { font-weight: 300 !important; letter-spacing: -0.5px; }
+    /* Tjockare rubrik med röd färg */
+    h1 { 
+        font-weight: 800 !important; 
+        color: #FF4B4B !important;
+        letter-spacing: -0.5px; 
+    }
     
     /* Röd Sourdough Guide-knapp */
     div[data-testid="stSidebar"] div[data-testid="stExpander"] {
@@ -73,15 +78,8 @@ recipes = {
             "Water": 0.3088, "Salt": 0.0132, "Walnuts": 0.0650, "Dry Yeast": 0.0001
         },
         "hydration": 70, "default_weight": 800, "bake_temp": "245°C", "bake_time": "30-35 min", "finish": "15s Steam",
-        "instructions": """
-        1. **Prepare Walnuts:** Lightly toast walnuts (5-8 min) and let cool.
-        2. **Autolyse:** Mix wheat flour, rye flour, and water. Rest 40-60 min.
-        3. **Mix:** Add starter and yeast. Knead 10 min.
-        4. **Salt & Walnuts:** Add salt. During first fold, gently incorporate toasted walnuts.
-        5. **Proof:** 3 sets of folds. Place in basket and refrigerate 12–14h.
-        6. **Bake:** Score and bake at 245°C with steam.
-        """,
-        "pro_tips": "Toasting walnuts enhances flavor and prevents the dough from turning purple."
+        "instructions": "1. Toast walnuts. 2. Autolyse. 3. Mix starter. 4. Fold in walnuts. 5. Cold proof 12h.",
+        "pro_tips": "Toasting walnuts enhances flavor and prevents purple dough."
     },
     "Monde Multi Grain Sourdough": {
         "ingredients": {
@@ -156,11 +154,8 @@ selling_price = st.sidebar.number_input("Selling Price (per unit)", value=900.0)
 
 # --- CALCULATIONS ---
 total_dough_kg = (units * target_weight) / 1000
-
-# Cost calculation (including 25% overhead)
 cost_dough = total_dough_kg * flour_price_kg
 total_prod_cost = cost_dough * 1.25
-
 total_revenue = units * selling_price
 total_profit = total_revenue - total_prod_cost
 
