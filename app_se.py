@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 st.set_page_config(page_title="Chef Martins Professionell Receptmaster", layout="wide")
 
@@ -6,9 +7,10 @@ st.set_page_config(page_title="Chef Martins Professionell Receptmaster", layout=
 st.markdown("""
     <style>
     h1 { 
-        font-weight: 400 !important; /* Gjort texten tunnare */
+        font-weight: 400 !important; 
         color: #FF4B4B !important;
-        letter-spacing: -0.5px; 
+        letter-spacing: -0.5px;
+        margin-top: -20px; /* Flyttar upp texten lite mot bilden */
     }
     
     div[data-testid="stSidebar"] div[data-testid="stExpander"] {
@@ -31,6 +33,15 @@ st.markdown("""
     }
     </style>
     """, unsafe_allow_html=True)
+
+# --- LOGOTYP OCH RUBRIK ---
+# Vi använder kolumner för att kunna centrera eller placera loggan snyggt
+logga_path = "logga Martin Löf copy.png"
+
+if os.path.exists(logga_path):
+    st.image(logga_path, width=150) # Du kan justera storleken här
+else:
+    st.warning("Logotypen hittades inte. Se till att filnamnet är korrekt.")
 
 st.title("Chef Martins Professionell Receptmaster")
 
@@ -192,7 +203,6 @@ revenue_sek = units * selling_price_sek
 profit_sek = revenue_sek - cost_sek
 
 # --- HUVUDDISPLAY ---
-# Titeln sätts högst upp via st.title, så här fortsätter vi med innehållet
 st.header(selected_name)
 
 col_left, col_right = st.columns([3, 2])
