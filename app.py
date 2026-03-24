@@ -4,39 +4,75 @@ st.set_page_config(page_title="Monde Bakery Recipe Master", layout="wide")
 
 st.title("Monde Bakery - Professional Recipe Master")
 
+# --- NY SEKTION: SKÖTSEL AV SURDEG ---
+with st.expander("KLICKA HÄR: Hur du sköter om din surdeg (Sourdough Care Guide)"):
+    st.subheader("Professional Sourdough Care Guide")
+    st.write("""
+    **1. Vad är en surdegsstart?**
+    En surdeg är en levande kultur av vildjäst (som får brödet att höja sig) och mjölksyrabakterier (som ger smak och syra). Den hålls vid liv genom att man regelbundet "matar" den med färskt mjöl och vatten.
+
+    **2. Daglig skötsel (Om du bakar ofta)**
+    Mata din start 1-2 gånger per dag vid rumstemperatur. 
+    * *Exempel:* 50g start + 50g vatten + 50g mjöl.
+    * Den är redo när den fördubblat sin volym, bubblar aktivt och doftar friskt syrligt (ca 4-8 timmar).
+
+    **3. Förvaring i kylskåp (Om du bakar sällan)**
+    * Förvara starten i kylskåp och mata den en gång i veckan.
+    * *Veckomatning:* Ta ut starten, släng allt utom ca 1 kg. Mata med 2 kg vatten och 2 kg mjöl. Låt stå framme 1-2 timmar innan den åker in i kylen igen.
+
+    **4. Innan bakning**
+    Ta ut starten från kylen och mata den (t.ex. 1kg vatten + 1kg mjöl). Låt stå 4-6 timmar tills den når sin topp. För extra styrka, mata den två gånger innan bakning.
+
+    **5. Vilket mjöl ska jag använda?**
+    Vete, fullkornsvete eller rågmjöl fungerar. En liten mängd råg- eller fullkornsmjöl gör ofta starten mer aktiv tack vare mer näring.
+
+    **6. Tecken på en hälsosam surdeg**
+    * Doftar fruktigt, som yoghurt eller behagligt surt.
+    * Bubblar aktivt och fördubblar sin volym.
+
+    **7. Problem & Lösningar**
+    * *Doftar aceton/alkohol:* Starten är hungrig, mata den oftare.
+    * *Vätska på toppen (Hooch):* Normalt när den är hungrig. Häll av eller rör ner och mata direkt.
+    * *Svag jäsning:* Mata den flera gånger i rad i rumstemperatur.
+
+    **8. Temperatur**
+    * 24-26°C är idealiskt för vetesurdeg. Vid 28°C+ går det väldigt snabbt och blir surare.
+    """)
+
 # --- DATA: RECIPES DATABASE ---
 recipes = {
     "Swedish Cinnamon Buns": {
         "ingredients": {
-            # Deg (Baserat på total degvikt 3104g i originalfilen)
-            "Dough: Wheat Flour": 0.3350,  # 1040g
-            "Dough: Milk": 0.2577,         # 800g
-            "Dough: Sourdough": 0.1289,    # 400g
-            "Dough: Cold Butter": 0.0805,  # 250g
-            "Dough: Sugar": 0.0548,        # 170g
-            "Dough: Cardamom": 0.0064,     # 20g
-            "Dough: Salt": 0.0045,         # 14g
+            # Deg (Baserat på originalfilens proportioner)
+            "Dough: Wheat Flour": 0.3350,
+            "Dough: Milk": 0.2577,
+            "Dough: Sourdough": 0.1289,
+            "Dough: Cold Butter": 0.0805,
+            "Dough: Sugar": 0.0548,
+            "Dough: Cardamom": 0.0064,
+            "Dough: Salt": 0.0045,
             # Fyllning
-            "Filling: Butter": 0.0967,     # 300g
-            "Filling: Sugar": 0.0290,      # 90g
-            "Filling: Cinnamon": 0.0064    # 20g
+            "Filling: Butter": 0.0967,
+            "Filling: Sugar": 0.0290,
+            "Filling: Cinnamon": 0.0064
         },
         "hydration": 50, "default_weight": 129, "bake_temp": "175–200°C", "bake_time": "15–20 min", "steam": "Egg Wash",
         "instructions": """
         1. Autolyse: Mix milk, cardamom, sugar and flour. Knead 2-3 min. Rest 30 min.
         2. Mix: Add sourdough starter and knead 10 min. 
-        3. Salt: Add salt and knead 3 more min until strong and elastic.
-        4. Filling: In a separate bowl, mix softened butter, sugar, and cinnamon until smooth.
-        5. Shape: Roll to 1cm thick. Spread filling, fold in three. Cut 2cm strips and twist into knots.
-        6. Proof: Cover and cold proof in fridge for 12 hours (overnight).
-        7. Bake: Brush with egg wash + milk. Sprinkle pearl sugar. Bake 175–200°C.
+        3. Salt: Add salt and knead 3 more min.
+        4. Filling: Mix softened butter, sugar, and cinnamon.
+        5. Shape: Roll, spread filling, fold in three. Cut strips and twist into knots.
+        6. Proof: Cold proof in fridge for 12 hours.
+        7. Bake: Brush with egg wash + milk. Sprinkle pearl sugar.
         """,
         "pro_tips": """
         ### Deep Dive: Professional Cinnamon Bun Tips
-        * The Cold Milk Secret: Always use cold milk to prevent the dough from overheating during the long knead.
-        * Filling Distribution: Ensure your filling butter is soft but not melted for an even spread that stays inside the bun.
-        * The Knot Tension: Twist gently; tight knots will "erupt" in the center during baking.
-        * Post-Bake: Brush with sugar syrup immediately after the oven to lock in moisture.
+        * **The Cold Milk Secret:** Always use cold milk. The friction during long kneading generates heat; cold milk prevents the dough from getting too warm and weakening the gluten.
+        * **Knot Tension:** Do not pull too hard when twisting. If the knot is too tight, the center will pop out like a volcano in the oven instead of expanding evenly.
+        * **Fermentation Peak:** The 12-hour cold proof develops lactic acid, resulting in superior caramelization and crust color.
+        * **The Egg Wash Shine:** Whisk egg with a pinch of salt and milk. Let it sit for 10 min before brushing to break down proteins for a smoother, professional shine.
+        * **Internal Temp:** Take them out at 92-94°C internal temperature to ensure they stay moist.
         """
     },
     "Focaccia with Sourdough": {
@@ -46,7 +82,7 @@ recipes = {
         },
         "hydration": 75, "default_weight": 800, "bake_temp": "245°C", "bake_time": "25-30 min", "steam": "15 sec",
         "instructions": "Autolyse 40m. Mix starter/salt (10m). 3-4 sets of folds. Cold proof 12-14h.",
-        "pro_tips": "The Brine Secret: Mix water, olive oil, and salt into an emulsion. Pour into dimples before baking."
+        "pro_tips": "The Brine Secret: Mix water, olive oil, and salt. Pour into dimples before baking."
     },
     "Monde Multi Grain Sourdough": {
         "ingredients": {
@@ -55,10 +91,9 @@ recipes = {
             "Seeds Mix": 0.1052
         },
         "hydration": 70, "default_weight": 1000, "bake_temp": "245°C", "bake_time": "45 min", "steam": "15 sec",
-        "instructions": "Autolyse 40m. Mix starter/salt (10m). Stretch & Fold. Cold proof 12-14h.",
+        "instructions": "Autolyse 40m. Mix starter/salt. Stretch & Fold. Cold proof 12-14h.",
         "pro_tips": "Bake until internal temp reaches 98°C."
-    },
-    # Övriga recept (Walnuts, Ciabatta, Baguette, Levain) behålls som tidigare...
+    }
 }
 
 # --- SIDEBAR: CALCULATOR ---
@@ -94,7 +129,7 @@ with col_left:
     
     with tab1:
         st.subheader("Full Ingredients Breakdown")
-        st.write(f"Production: {units} units at {target_weight}g")
+        st.write(f"Calculating for {units} units at {target_weight}g each.")
         
         st.markdown("---")
         c1, c2, c3 = st.columns([3, 2, 1])
@@ -102,19 +137,16 @@ with col_left:
         c2.write("**Required Weight**")
         c3.write("**Ratio**")
         
-        # Display each flour and liquid
         for ing, ratio in recipe["ingredients"].items():
             ing_weight = total_batch_kg * ratio
             unit = "kg" if ing_weight >= 1 else "g"
             display_val = ing_weight if unit == "kg" else ing_weight * 1000
             
             r1, r2, r3 = st.columns([3, 2, 1])
-            # Sätt fetstilt på "Dough:" eller "Filling:" för tydlighet
             r1.write(ing)
             r2.write(f"**{display_val:.2f} {unit}**")
             r3.write(f"{ratio*100:.1f}%")
             
-        # Display custom ingredient
         if custom_ing_amount > 0:
             r1, r2, r3 = st.columns([3, 2, 1])
             r1.write(custom_ing_name)
@@ -127,7 +159,7 @@ with col_left:
         st.metric("Total Batch Dough Weight", f"{total_dough_mass:.2f} kg")
 
     with tab2:
-        st.subheader("Professional Process")
+        st.subheader("Step-by-Step Guide")
         st.write(recipe["instructions"])
         
     with tab3:
@@ -148,8 +180,5 @@ with col_right:
     st.metric("Net Profit", f"{total_profit:,.0f} LKR")
     st.write(f"Total Revenue: {total_revenue:,.0f} LKR")
     st.write(f"Est. Production Cost: {total_cost:,.0f} LKR")
-    
-    st.divider()
-    st.success("Happy baking—you are in for a rewarding bake!")
 
 st.caption("Monde Bakery Digital Handbook | 2026")
