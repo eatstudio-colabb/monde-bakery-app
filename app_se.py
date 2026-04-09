@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Chef Martinos Pro Recept Master", layout="wide")
+st.set_page_config(page_title="Brödometer", layout="wide")
 
 # --- ANPASSAD CSS ---
 st.markdown("""
@@ -39,7 +39,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("Chef Martinos Pro Recept Master")
+st.title("Brödometer")
 
 # --- RECEPTDATABAS ---
 recipes = {
@@ -218,6 +218,7 @@ revenue_sek = units * selling_price_sek
 profit_sek = revenue_sek - cost_sek
 
 # --- HUVUDDISPLAY ---
+st.title("Brödometer")
 st.header(selected_name)
 
 col_left, col_right = st.columns([3, 2])
@@ -262,4 +263,4 @@ with col_right:
     st.info(f"Ugn: {recipe['bake_temp']} | Tid: {recipe['bake_time']}")
     st.info(f"Finish: {recipe['finish']}")
 
-st.caption("Chef Martinos Pro Recept Master | 2026")
+st.caption("Brödometer | 2026")
